@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hellojarvis.dao.IUserInfoDao">
+    <resultMap id="userInfoResult" type="userInfo">
+        <id column="userId" property="userId"/>
+        <result column="roleId" property="roleId"/>
+        <result column="userName" property="userName"/>
+        <result column="userPhone" property="userPhone"/>
+        <result column="userGender" property="userGender"/>
+        <result column="userBirth" property="userBirthday"/>
+        <association property="role" select="cn.hellojarvis.dao.IRoleDao.getRoleById" column="roleId"/>
+    </resultMap>
+    <select id="getUserInfo" resultMap="userInfoResult" parameterType="Integer">
+        select *
+        from userinfo
+        where userId = #{userId}
+    </select>
+    <update id="modifyUserInfo" parameterType="userInfo">
+        update userinfo
+        set userName=#{userName},
+            userPhone=#{userPhone},
+            userGender=#{userGender},
+            userBirth=#{userBirth},
+            updateDate=now()
+        where userId = #{userId}
+    </update>
+</mapper>
