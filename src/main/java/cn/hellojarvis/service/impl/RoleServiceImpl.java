@@ -15,7 +15,7 @@ import java.util.List;
  * @author : JarvisHsu
  * @create 2020/08/08 23:17
  */
-@Repository("RoleServiceImpl")
+@Service("RoleServiceImpl")
 public class RoleServiceImpl implements IRoleService {
     @Autowired
     private IRoleDao roleDao;

@@ -119,7 +119,9 @@
     $(function () {
         var str = "${sessionScope.UserInfo.role.roleName}";
         if (str === '客户') {
-            $("#fun1").text("请求维修");
+            $("#fun1").text("请求维修").click(function (){
+                post("")
+            });
             $("#fun2").text("个人信息");
             $("#fun3").text("付费");
             $("#fun4").text("评论");

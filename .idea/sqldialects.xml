@@ -4,4 +4,7 @@
     <file url="file://$PROJECT_DIR$/database_table/createTable.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/src/main/resources/mapper/UserInfoMapper.xml" dialect="MySQL" />
   </component>
+  <component name="SqlResolveMappings">
+    <file url="file://$PROJECT_DIR$/src/main/resources/mapper/UserInfoMapper.xml" scope="{&quot;node&quot;:{  &quot;@negative&quot;:&quot;1&quot;,  &quot;group&quot;:{   &quot;@kind&quot;:&quot;root&quot;,   &quot;node&quot;:{    &quot;name&quot;:{     &quot;@qname&quot;:&quot;77558173-6130-43aa-9f05-af6605d7dadb&quot;    },    &quot;group&quot;:{     &quot;@kind&quot;:&quot;schema&quot;,     &quot;node&quot;:{      &quot;name&quot;:{       &quot;@qname&quot;:&quot;appliances&quot;      }     }    }   }  } }}" />
+  </component>
 </project>

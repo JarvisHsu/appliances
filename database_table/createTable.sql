@@ -1,6 +1,6 @@
 use appliances;
-
-drop table if exists role,userlogin,userInfo;
+drop table if exists PayAccount,haveGoods,requestPage,userAddr;
+drop table if exists goods,role,userlogin,userInfo;
 
 -- 用户角色
 CREATE table role
@@ -51,7 +51,6 @@ CREATE table userInfo
     CONSTRAINT FK_roleID FOREIGN KEY (roleId) REFERENCES role (roleId)
 );
 
-drop table if exists userInfo,goods,haveGoods,requestPage;
 INSERT into userInfo
 VALUES (1001, 1, '客户1', '14782577866', '男', '2020-02-03', DEFAULT, DEFAULT);
 INSERT into userInfo(userId, roleId, userName)
@@ -64,45 +63,132 @@ VALUES (1002, 1, '客户2'),
        (1008, 2, '客服1'),
        (1009, 2, '客服2');
 
+
 # 产品表(固定)
 create table goods
 (
-    goodsId   int auto_increment primary key,
-    goodsName varchar(32),
-    goodsInfo varchar(128)
+    goodsId   int auto_increment,
+    goodsName varchar(32) not null,
+    goodsInfo varchar(128),
+    CONSTRAINT PK_GOODS primary key (goodsId)
 ) auto_increment 500;
+
+insert into goods
+values (default, '产品1', '公司的首批试行产品,可能经常会出现问题，修理费用很低'),
+       (default, '产品2', '公司的二批试行产品,可能经常会出现问题，修理费用也很低'),
+       (default, '产品3', '公司的三批试行产品,可能偶尔会出现问题，修理费用较低'),
+       (default, '产品4', '公司的四批试行产品,可能偶尔会出现问题，修理费用也较低低'),
+       (default, '产品5', '公司的五批试行产品,一般不会出现问题，修理费用较高'),
+       (default, '产品6', '公司的六批试行产品,基本不再出现问题，修理费用很高');
+
 
 #用户产品绑定
 create table haveGoods
 (
     goodsId int     not null,
     userId  int     not null,
-    status  char(1) not null #1，已购买
+    status  char(1) not null, #1，已购买
+    CONSTRAINT PK_HAVEGOODS primary key (goodsId, userId),
+    constraint FK_HAVEUSER foreign key (userId) references userlogin (userId),
+    constraint FK_HAVEGOODS foreign key (goodsId) references goods (goodsId)
 );
 
-# 请求维修的订单
-create table requestPage(
-    goodsId int not null ,
-    userId int not null ,
-    userAddr varchar(128) not null ,
-    requestTime date not null
-);
+insert into haveGoods
+values (501, 1001, '1'),
+       (502, 1001, '1'),
+       (503, 1001, '1'),
+       (504, 1001, '1'),
+       (505, 1002, '1'),
+       (501, 1002, '1'),
+       (502, 1002, '1'),
+       (500, 1004, '1'),
+       (502, 1004, '1'),
+       (503, 1005, '1');
 
 # 地址
-create table userAddr(
-    addrId int auto_increment,
-    userId int not null ,
-    省 varchar(8),
-    市 varchar(8),
-    区 varchar(8),
-    详细 varchar(32),
-    联系电话 varchar(32),
+create table userAddr
+(
+    addrId        int auto_increment,
+    userId        int not null,
+    province      varchar(8),
+    city          varchar(8),
+    area          varchar(8),
+    address       varchar(32),
+    contactNumber varchar(32),
     CONSTRAINT PK_ADDRID primary key (addrId)
+) auto_increment 1000;
+
+drop procedure if exists proc_userAddr;
+delimiter $
+create procedure proc_userAddr()
+BEGIN
+    DECLARE i int default 1;
+    while i < 4
+        do
+            insert into userAddr
+            values (default, 1001, concat(i, '省'), concat(i, '市'), concat(i, '区'), concat(i, '路', i + 1, '号'),
+                    round((13312312312 + RAND() * 1000000), 0));
+            set i = i + 1;
+        end while;
+
+    set i = 1;
+    while i < 5
+        do
+            insert into userAddr
+            values (default, 1002, concat(i + 1, '省'), concat(i + 2, '市'), concat(i - 1, '区'),
+                    concat(i - 1, '路', i, '号'), round(13321321212 + RAND() * 1000000, 0));
+            set i = i + 1;
+        end while;
+    set i = 1;
+    while i < 2
+        do
+            insert into userAddr
+            values (default, 1004, concat(i + 5, '省'), concat(i + 2, '市'), concat(i - 1, '区'),
+                    concat(i - 1, '路', i, '号'), round(13325671212 + RAND() * 1000000, 0));
+            set i = i + 1;
+        end while;
+    set i = 1;
+    while i < 3
+        do
+            insert into userAddr
+            values (default, 1005, concat(i + 3, '省'), concat(i + 2, '市'), concat(i - 1, '区'),
+                    concat(i - 1, '路', i, '号'), round(13327891212 + RAND() * 1000000, 0));
+            set i = i + 1;
+        end while;
+end;
+call proc_userAddr();
+
+# 请求维修的订单
+create table requestPage
+(
+    goodsId     int            not null,               #产品Id
+    userId      int            not null,               #客户Id
+    addrId      int            not null,               #客户地址
+    price       decimal(10, 2) not null,               #价格
+    status      char(1)        not null,               #0，废弃；1，成功；2，正在进行,3，未支付；
+    requestTime datetime       not null,               #请求时间
+    updateTime  datetime       not null default now(), #更新时间
+    constraint PK_REQUEST primary key (goodsId, userId, addrId),
+    constraint FK_REUSER foreign key (userId) references userlogin (userId),
+    constraint FK_REGOODS foreign key (goodsId) references goods (goodsId),
+    constraint FK_READDR foreign key (addrId) references userAddr (addrId)
 );
 
+insert into requestPage
+values (501, 1001, 1001, 8.4, '2', now(), default),
+       (502, 1001, 1002, 7.8, '0', now(), default),
+       (501, 1002, 1005, 9.2, '1', now(), default);
 
+create table PayAccount
+(
+    userId  int          not null,
+    payPwd  varchar(128) not null,
+    balance decimal(10, 2) default 1000.0,
+    CONSTRAINT PK_PAYID primary key (userId)
+);
 
-
-
-
-
+insert into PayAccount
+values (1001, md5('123'), default),
+       (1002, md5('123'), default),
+       (1004, md5('123'), default),
+       (1005, md5('123'), default);

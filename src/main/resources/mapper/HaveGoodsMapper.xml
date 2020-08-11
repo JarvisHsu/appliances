@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hellojarvis.dao.IHaveGoodsDao">
+    <resultMap id="goodsResult" type="goods">
+        <id column="goodsId" property="goodsId"/>
+        <result column="goodsName" property="goodsName"/>
+        <result column="goodsInfo" property="goodsInfo"/>
+    </resultMap>
+    <select id="loadUserGoods" resultMap="goodsResult" parameterType="int">
+        select *
+        from havegoods,
+             goods
+        where goods.goodsId = havegoods.goodsId
+          and userId = #{userId}
+    </select>
+</mapper>

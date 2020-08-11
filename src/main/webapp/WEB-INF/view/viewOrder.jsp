@@ -1,14 +1,8 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Lenovo
-  Date: 2020/08/09
-  Time: 19:20
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+<%--用户查看订单然后进行评论或者付费--%>
+    <title>查看您的订单</title>
 </head>
 <body>
 

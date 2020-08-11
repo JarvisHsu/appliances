@@ -17,6 +17,7 @@ import java.io.IOException;
  *
  * @author : JarvisHsu
  * @create 2020/08/09 13:54
+ * 进行所有用户的个人信息修改，查看。
  */
 @Controller("UserInfoController")
 public class UserInfoController {
@@ -33,36 +34,30 @@ public class UserInfoController {
     }
 
     @RequestMapping("/modifyUserInfo")
-    public ModelAndView modifyUserInfo(UserInfo userInfo,HttpServletRequest request,HttpServletResponse response) throws IOException {
+    public void modifyUserInfo(UserInfo userInfo,HttpServletRequest request,HttpServletResponse response) throws IOException {
         System.out.println(userInfo);
-        ModelAndView modelAndView = new ModelAndView();
         boolean b = userInfoServiceImpl.modifyUserInfo(userInfo);
+        response.setContentType("text/html;charset=utf-8");
         if (b){
             request.getSession().setAttribute("UserInfo",userInfoServiceImpl.loadUserInfoById(userInfo.getUserId()));
-            response.getWriter().println("<!doctype html>" +
-                    "<script>" +
-                    "albert('修改成功')" +
-                    "</script>");
-            modelAndView.setViewName("redirect:getUserInfo");
+            response.getWriter().print("修改成功");
         }else {
-            response.getWriter().println("<script>" +
-                    "albert('修改失败请重试')" +
-                    "</script>");
-            modelAndView.setViewName("modifyView");
+            response.getWriter().print("修改失败,请重试");
         }
-        return modelAndView;
+        response.getWriter().flush();
     }
 
     /**
      *
-     * @param request servlet 请求
+     * @param request 请求
      * @return 调用getUserInfo
      */
     @RequestMapping("/indexView")
     public ModelAndView indexView(HttpServletRequest request){
+        //连接login后删除下面四行
         UserLogin userLogin = new UserLogin();
-        userLogin.setUserId(1001);
-        userLogin.setUserPwd("123");
+        userLogin.setUserId(1009);
+        userLogin.setUserPwd("789");
         request.getSession().setAttribute("User",userLogin);
         return new ModelAndView("redirect:getUserInfo");
     }
