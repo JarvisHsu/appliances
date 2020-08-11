@@ -24,6 +24,6 @@ public class UserInfoServiceImpl implements IUserInfoService {
 
     @Override
     public boolean modifyUserInfo(UserInfo userInfo) {
-        return modifyUserInfo(userInfo);
+        return userInfoDao.modifyUserInfo(userInfo);
     }
 }

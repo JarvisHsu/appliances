@@ -27,7 +27,7 @@ public class UserLoginController {
     public ModelAndView loginHandler(UserLogin userLogin, HttpServletRequest request) throws IOException {
         String rst;
         if (userLoginServiceImpl.loadUser(userLogin)){
-            rst="index";
+            rst="redirect:getUserInfo";
             request.getSession().setAttribute("User",userLogin);
         }else {
             request.setAttribute("loginError","用户名或密码错误");

@@ -51,6 +51,7 @@ CREATE table userInfo
     CONSTRAINT FK_roleID FOREIGN KEY (roleId) REFERENCES role (roleId)
 );
 
+drop table if exists userInfo,goods,haveGoods,requestPage;
 INSERT into userInfo
 VALUES (1001, 1, '客户1', '14782577866', '男', '2020-02-03', DEFAULT, DEFAULT);
 INSERT into userInfo(userId, roleId, userName)

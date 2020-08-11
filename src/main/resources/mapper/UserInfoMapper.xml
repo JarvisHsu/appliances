@@ -22,7 +22,7 @@
         set userName=#{userName},
             userPhone=#{userPhone},
             userGender=#{userGender},
-            userBirth=#{userBirth},
+            userBirth=#{userBirthday},
             updateDate=now()
         where userId = #{userId}
     </update>

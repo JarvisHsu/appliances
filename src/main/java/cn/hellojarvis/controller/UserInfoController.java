@@ -23,6 +23,7 @@ public class UserInfoController {
     @Autowired
     private UserInfoServiceImpl userInfoServiceImpl;
 
+
     @RequestMapping("/getUserInfo")
     public ModelAndView getUserInfo(HttpServletRequest request, HttpServletResponse response) throws IOException {
         UserLogin user = (UserLogin) request.getSession().getAttribute("User");
@@ -30,18 +31,33 @@ public class UserInfoController {
         request.getSession().setAttribute("UserInfo",userInfo);
         return new ModelAndView("index");
     }
+
     @RequestMapping("/modifyUserInfo")
-    public void modifyUserInfo(UserInfo userInfo,HttpServletRequest request,HttpServletResponse response) throws IOException {
+    public ModelAndView modifyUserInfo(UserInfo userInfo,HttpServletRequest request,HttpServletResponse response) throws IOException {
+        System.out.println(userInfo);
+        ModelAndView modelAndView = new ModelAndView();
         boolean b = userInfoServiceImpl.modifyUserInfo(userInfo);
         if (b){
             request.getSession().setAttribute("UserInfo",userInfoServiceImpl.loadUserInfoById(userInfo.getUserId()));
-            response.getWriter().print("1");
+            response.getWriter().println("<!doctype html>" +
+                    "<script>" +
+                    "albert('修改成功')" +
+                    "</script>");
+            modelAndView.setViewName("redirect:getUserInfo");
         }else {
-            response.getWriter().print("0");
+            response.getWriter().println("<script>" +
+                    "albert('修改失败请重试')" +
+                    "</script>");
+            modelAndView.setViewName("modifyView");
         }
-        response.getWriter().flush();
+        return modelAndView;
     }
 
+    /**
+     *
+     * @param request servlet 请求
+     * @return 调用getUserInfo
+     */
     @RequestMapping("/indexView")
     public ModelAndView indexView(HttpServletRequest request){
         UserLogin userLogin = new UserLogin();
@@ -50,6 +66,9 @@ public class UserInfoController {
         request.getSession().setAttribute("User",userLogin);
         return new ModelAndView("redirect:getUserInfo");
     }
+    /**
+     *     切换到修改界面
+     */
     @RequestMapping("/modifyView")
     public ModelAndView modifyView(){
         return new ModelAndView("modifyUserInfo");
