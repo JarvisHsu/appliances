@@ -1,6 +1,7 @@
 package cn.hellojarvis.controller;
 
 import cn.hellojarvis.entity.Goods;
+import cn.hellojarvis.entity.UserAddress;
 import cn.hellojarvis.entity.UserInfo;
 import cn.hellojarvis.service.impl.HaveGoodsServiceImpl;
 import cn.hellojarvis.service.impl.RequestPageServiceImpl;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -23,6 +26,7 @@ import java.util.List;
 public class C_UserOperationController {
     @Autowired
     private RequestPageServiceImpl requestPageService;
+    @Autowired
     private HaveGoodsServiceImpl haveGoodsService;
 
     @RequestMapping("/loadUserGoods")
@@ -32,13 +36,22 @@ public class C_UserOperationController {
         UserInfo userInfo = (UserInfo) request.getSession().getAttribute("UserInfo");
         List<Goods> goodsList = haveGoodsService.loadUserGoods(userInfo.getUserId());
         if (goodsList!=null){
-            request.getSession().setAttribute("UserGoods",goodsList);
+            request.getSession().setAttribute("goodsList",goodsList);
             modelAndView.setViewName("requestOrder(cUser)");
         }
         return modelAndView;
     }
 
-
-
+    @RequestMapping("/loadUserAddress")
+    public ModelAndView loadUserAddress(HttpServletRequest request) throws IOException {
+        ModelAndView modelAndView = new ModelAndView();
+        UserInfo userInfo = (UserInfo) request.getSession().getAttribute("UserInfo");
+        List<UserAddress> userAddrList = requestPageService.loadUserAddress(userInfo.getUserId());
+        if (userAddrList!=null){
+            request.getSession().setAttribute("userAddrList",userAddrList);
+            modelAndView.setViewName("requestOrder(cUser)");
+        }
+        return modelAndView;
+    }
 
 }
