@@ -15,6 +15,9 @@ public class RequestPage {
     private String status;
     private String requestDate;
     private String updateDate;
+    private Goods goods = new Goods();
+    private UserInfo userInfo = new UserInfo();
+    private UserAddress userAddress = new UserAddress();
 
     @Override
     public String toString() {
@@ -27,7 +30,34 @@ public class RequestPage {
                 ", status='" + status + '\'' +
                 ", requestDate='" + requestDate + '\'' +
                 ", updateDate='" + updateDate + '\'' +
+                ", goods=" + goods +
+                ", userInfo=" + userInfo +
+                ", userAddress=" + userAddress +
                 '}';
+    }
+
+    public UserInfo getUserInfo() {
+        return userInfo;
+    }
+
+    public void setUserInfo(UserInfo userInfo) {
+        this.userInfo = userInfo;
+    }
+
+    public UserAddress getUserAddress() {
+        return userAddress;
+    }
+
+    public void setUserAddress(UserAddress userAddress) {
+        this.userAddress = userAddress;
+    }
+
+    public Goods getGoods() {
+        return goods;
+    }
+
+    public void setGoods(Goods goods) {
+        this.goods = goods;
     }
 
     public Integer getOrderId() {

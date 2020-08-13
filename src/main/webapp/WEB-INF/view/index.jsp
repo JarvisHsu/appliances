@@ -123,8 +123,12 @@
                 post("loadUserGoods")
             });
             $("#fun2").text("个人信息");
-            $("#fun3").text("付费");
-            $("#fun4").text("评论");
+            $("#fun3").text("付费").click(function () {
+                post("loadOrdersByUserId");
+            });
+            $("#fun4").text("评论").click(function () {
+                post("loadOrdersByUserId");
+            });
             $("#fun5").text("暂未开通");
         }
         if (str === '客服') {

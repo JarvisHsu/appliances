@@ -18,4 +18,6 @@ public interface IRequestPageDao {
     public int createAnOrder(RequestPage requestPage);
     public UserAddress loadUserAddressById(Integer addrId);
     public RequestPage loadAnOrderByIds(Map<String,Integer> map);
+    public List<RequestPage> loadUserOrders(Integer userId);
+    public int updateOrderStatus(Map<String,Object> map);
 }

@@ -94,14 +94,21 @@ public class C_UserOperationController {
         return new ModelAndView("requestOrder(cUser)");
     }
 
-    @RequestMapping("/loadUserOrders")
-    public ModelAndView loadUserOrders() {
-        return new ModelAndView();
+    @RequestMapping("/cancelAnOrder")
+    public ModelAndView cancelAnOrder(HttpServletRequest request) {
+        String status = request.getParameter("0");
+        Integer orderId = Integer.valueOf(request.getParameter("1"));
+        boolean b = requestPageService.updateOrderStatus(status, orderId);
+        return new ModelAndView("index");
     }
-
-    @RequestMapping("/loadAnOrder")
-    public ModelAndView loadAnOrder(HttpServletRequest request) {
-        return new ModelAndView();
+    @RequestMapping("/loadOrdersByUserId")
+    public ModelAndView loadOrdersByUserId(HttpServletRequest request){
+        UserInfo userInfo = (UserInfo) request.getSession().getAttribute("UserInfo");
+        Integer userId = userInfo.getUserId();
+        List<RequestPage> requestPages = requestPageService.loadUserOrders(userId);
+        requestPages.forEach(System.out::println);
+        request.setAttribute("pageList",requestPages);
+        return new ModelAndView("viewOrder");
     }
 
 }

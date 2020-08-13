@@ -16,4 +16,6 @@ public interface IRequestPageService {
      public boolean createAnOrder(RequestPage requestPage);
      public UserAddress loadUserAddressById(Integer addrId);
      public RequestPage loadAnOrderByIds(Integer addrId,Integer goodsId,Integer userId);
+     public List<RequestPage> loadUserOrders(Integer userId);
+     public boolean updateOrderStatus(String status,Integer orderId);
 }

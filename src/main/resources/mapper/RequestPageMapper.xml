@@ -35,6 +35,9 @@
         <result column="status" property="status"/>
         <result column="requestTime" property="requestDate"/>
         <result column="updateTime" property="updateDate"/>
+        <association property="userInfo" column="userId" select="cn.hellojarvis.dao.IUserInfoDao.getUserInfo"/>
+        <association property="goods" column="goodsId" select="cn.hellojarvis.dao.IGoodsDao.loadGoodById"/>
+        <association property="userAddress" column="addrId" select="cn.hellojarvis.dao.IRequestPageDao.loadUserAddressById"/>
     </resultMap>
     <select id="loadAnOrderByIds" parameterType="map" resultMap="orderResult">
         select *
@@ -43,8 +46,18 @@
           and goodsId = #{goodsId}
           and userId = #{userId}
     </select>
+    <select id="loadUserOrders" resultMap="orderResult" parameterType="Integer">
+        select *
+        from requestpage
+        where userId = #{userId}
+    </select>
+    <update id="updateOrderStatus" parameterType="map">
+        update requestpage
+        set status = #{status}
+        where orderId = #{orderId}
+    </update>
     <insert id="createAnOrder" parameterType="requestPage">
-        insert into requestpage (goodsId,userId,addrId,price,status,requestTime,updateTime)
-            values (#{goodsId}, #{userId}, #{addrId}, #{price}, #{status}, now(), now());
+        insert into requestpage (goodsId, userId, addrId, price, status, requestTime, updateTime)
+        values (#{goodsId}, #{userId}, #{addrId}, #{price}, #{status}, now(), now());
     </insert>
 </mapper>

@@ -69,4 +69,5 @@ public class UserInfoController {
         return new ModelAndView("modifyUserInfo");
     }
 
+
 }

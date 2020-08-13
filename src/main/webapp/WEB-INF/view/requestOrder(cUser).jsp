@@ -149,7 +149,6 @@
                         已废弃
                     </C:if></td>
             </tr>
-
             <input id="cancel" type="button" value="取消订单">
             <input id="commit" type="button" value="确认订单">
         </table>
@@ -199,7 +198,11 @@
     });
     //取消订单
     $("#cancel").click(function () {
-
+        var parames = ['0',${requestScope.order.orderId}]
+        post("cancelAnOrder",parames);
+    });
+    $("#commit").click(function () {
+        post("getUserInfo");
     });
 
     function error() {

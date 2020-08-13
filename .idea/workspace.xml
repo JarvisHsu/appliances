@@ -28,17 +28,42 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aae1cdc4-369d-4970-aa5b-cb2da638508c" name="Default Changelist" comment="add sql code">
-      <change beforePath="$PROJECT_DIR$/database_table/createTable.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database_table/createTable.sql" afterDir="false" />
+    <list default="true" id="aae1cdc4-369d-4970-aa5b-cb2da638508c" name="Default Changelist" comment="request model add">
+      <change afterPath="$PROJECT_DIR$/src/main/java/cn/hellojarvis/controller/S_UserOperationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/CSS/CommonStyle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/77558173-6130-43aa-9f05-af6605d7dadb.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/77558173-6130-43aa-9f05-af6605d7dadb.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/77558173-6130-43aa-9f05-af6605d7dadb/storage_v2/_src_/schema/appliances.ZlAg6g.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/77558173-6130-43aa-9f05-af6605d7dadb/storage_v2/_src_/schema/appliances.ZlAg6g.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_08_11_14_30__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_08_11_14_30__Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_08_12_12_08__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020_08_12_12_08__Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/hellojarvis/controller/C_UserOperationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/hellojarvis/controller/C_UserOperationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cn/hellojarvis/controller/UserInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/hellojarvis/controller/UserInfoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/hellojarvis/dao/IRequestPageDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/hellojarvis/dao/IRequestPageDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/hellojarvis/entity/RequestPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/hellojarvis/entity/RequestPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/hellojarvis/service/IRequestPageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/hellojarvis/service/IRequestPageService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cn/hellojarvis/service/impl/RequestPageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cn/hellojarvis/service/impl/RequestPageServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/RequestPageMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/RequestPageMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/test/cn.hellojarvis.ServiceTest/RequestServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/cn.hellojarvis.ServiceTest/RequestServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/modifyUserInfo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/modifyUserInfo.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/requestOrder(cUser).jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/requestOrder(cUser).jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/viewOrder.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/viewOrder.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/hellojarvis/controller/C_UserOperationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/hellojarvis/controller/C_UserOperationController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/hellojarvis/dao/IRequestPageDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/hellojarvis/dao/IRequestPageDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/hellojarvis/entity/RequestPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/hellojarvis/entity/RequestPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/hellojarvis/service/IRequestPageService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/hellojarvis/service/IRequestPageService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cn/hellojarvis/service/impl/RequestPageServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cn/hellojarvis/service/impl/RequestPageServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/RequestPageMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/RequestPageMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/cn/hellojarvis/ServiceTest/RequestServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/cn/hellojarvis/ServiceTest/RequestServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/tomcat/logs/access_log.2020-08-13" beforeDir="false" afterPath="$PROJECT_DIR$/target/tomcat/logs/access_log.2020-08-13" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/_/org/apache/jsp/WEB_002dINF/view/requestOrder_0028cUser_0029_jsp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/_/org/apache/jsp/WEB_002dINF/view/requestOrder_0028cUser_0029_jsp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/_/org/apache/jsp/WEB_002dINF/view/requestOrder_0028cUser_0029_jsp.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/_/org/apache/jsp/WEB_002dINF/view/requestOrder_0028cUser_0029_jsp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/_/org/apache/jsp/begin_jsp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/_/org/apache/jsp/begin_jsp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/_/org/apache/jsp/begin_jsp.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/_/org/apache/jsp/begin_jsp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +109,7 @@
   </component>
   <component name="ProjectId" id="1fuCUHHArTixAZY1tfzG0iBUrB4" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="false" id="Update" />
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -125,15 +151,13 @@
     </key>
   </component>
   <component name="RunManager" selected="Maven.appliances [tomcat7:run]">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -170,6 +194,38 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="RequestServiceTest.testLoadUserOrders" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="appliances" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.hellojarvis.ServiceTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.hellojarvis.ServiceTest" />
+      <option name="MAIN_CLASS_NAME" value="cn.hellojarvis.ServiceTest.RequestServiceTest" />
+      <option name="METHOD_NAME" value="testLoadUserOrders" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RequestServiceTest.testUpdateOrderStatus" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="appliances" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.hellojarvis.ServiceTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.hellojarvis.ServiceTest" />
+      <option name="MAIN_CLASS_NAME" value="cn.hellojarvis.ServiceTest.RequestServiceTest" />
+      <option name="METHOD_NAME" value="testUpdateOrderStatus" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="appliances [tomcat7:run]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -197,11 +253,15 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.RequestServiceTest.testLoadUserAddress" />
-      <item itemvalue="Maven.appliances [tomcat7:run]" />
       <item itemvalue="JUnit.RequestServiceTest.testLoadAnOrder" />
+      <item itemvalue="Maven.appliances [tomcat7:run]" />
+      <item itemvalue="JUnit.RequestServiceTest.testUpdateOrderStatus" />
+      <item itemvalue="JUnit.RequestServiceTest.testLoadUserOrders" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RequestServiceTest.testLoadUserOrders" />
+        <item itemvalue="JUnit.RequestServiceTest.testUpdateOrderStatus" />
         <item itemvalue="JUnit.RequestServiceTest.testLoadAnOrder" />
         <item itemvalue="JUnit.RequestServiceTest.testLoadUserAddress" />
       </list>
@@ -282,6 +342,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="add sql code" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="153" y="300" key="#SQL_Dialects" timestamp="1597285527826">
+      <screen x="0" y="0" width="1563" height="1002" />
+    </state>
+    <state x="153" y="300" key="#SQL_Dialects/0.0.1563.1002@0.0.1563.1002" timestamp="1597285527826" />
     <state x="394" y="370" key="#SQL_Resolution_Scopes" timestamp="1597155730345">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -290,9 +354,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="175" width="1092" height="765" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597157191777" />
-    <state x="699" y="216" key="#com.intellij.ide.util.MemberChooser" timestamp="1597247468329">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="507" y="291" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1597289095530">
+      <screen x="0" y="0" width="1563" height="1002" />
     </state>
+    <state x="507" y="291" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1563.1002@0.0.1563.1002" timestamp="1597289095530" />
+    <state x="569" y="208" key="#com.intellij.ide.util.MemberChooser" timestamp="1597287198065">
+      <screen x="0" y="0" width="1563" height="1002" />
+    </state>
+    <state x="569" y="208" key="#com.intellij.ide.util.MemberChooser/0.0.1563.1002@0.0.1563.1002" timestamp="1597287198065" />
     <state x="699" y="216" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1597247468329" />
     <state x="690" y="295" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1597154133107">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -314,21 +383,25 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="405" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1597243161801" />
-    <state width="1877" height="260" key="GridCell.Tab.0.bottom" timestamp="1597281710649">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1519" height="262" key="GridCell.Tab.0.bottom" timestamp="1597287907923">
+      <screen x="0" y="0" width="1563" height="1002" />
     </state>
+    <state width="1519" height="262" key="GridCell.Tab.0.bottom/0.0.1563.1002@0.0.1563.1002" timestamp="1597287907923" />
     <state width="1877" height="260" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1597281710649" />
-    <state width="1877" height="260" key="GridCell.Tab.0.center" timestamp="1597281710649">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1519" height="262" key="GridCell.Tab.0.center" timestamp="1597287907923">
+      <screen x="0" y="0" width="1563" height="1002" />
     </state>
+    <state width="1519" height="262" key="GridCell.Tab.0.center/0.0.1563.1002@0.0.1563.1002" timestamp="1597287907923" />
     <state width="1877" height="260" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1597281710649" />
-    <state width="1877" height="260" key="GridCell.Tab.0.left" timestamp="1597281710649">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1519" height="262" key="GridCell.Tab.0.left" timestamp="1597287907923">
+      <screen x="0" y="0" width="1563" height="1002" />
     </state>
+    <state width="1519" height="262" key="GridCell.Tab.0.left/0.0.1563.1002@0.0.1563.1002" timestamp="1597287907923" />
     <state width="1877" height="260" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1597281710649" />
-    <state width="1877" height="260" key="GridCell.Tab.0.right" timestamp="1597281710649">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1519" height="262" key="GridCell.Tab.0.right" timestamp="1597287907923">
+      <screen x="0" y="0" width="1563" height="1002" />
     </state>
+    <state width="1519" height="262" key="GridCell.Tab.0.right/0.0.1563.1002@0.0.1563.1002" timestamp="1597287907923" />
     <state width="1877" height="260" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1597281710649" />
     <state width="220" height="539" key="HiddenNamespacesPopup" timestamp="1597150236985">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -366,5 +439,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1597157298314" />
+    <state x="444" y="216" width="672" height="678" key="search.everywhere.popup" timestamp="1597285724313">
+      <screen x="0" y="0" width="1563" height="1002" />
+    </state>
+    <state x="444" y="216" width="672" height="678" key="search.everywhere.popup/0.0.1563.1002@0.0.1563.1002" timestamp="1597285724313" />
   </component>
 </project>

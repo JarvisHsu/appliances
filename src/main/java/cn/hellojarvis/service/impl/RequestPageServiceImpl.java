@@ -48,4 +48,17 @@ public class RequestPageServiceImpl implements IRequestPageService {
         map.put("userId", userId);
         return requestPageDao.loadAnOrderByIds(map);
     }
+
+    @Override
+    public List<RequestPage> loadUserOrders(Integer userId) {
+        return requestPageDao.loadUserOrders(userId);
+    }
+
+    @Override
+    public boolean updateOrderStatus(String status, Integer orderId) {
+        Map<String,Object> map = new HashMap<>();
+        map.put("status",status);
+        map.put("orderId",orderId);
+        return requestPageDao.updateOrderStatus(map)!=0;
+    }
 }

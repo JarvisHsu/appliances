@@ -25,5 +25,14 @@ public class RequestServiceTest {
     @Test
     public void testLoadAnOrder(){
         System.out.println(requestPageService.loadAnOrderByIds(1002, 503, 1001));
+
+    }
+    @Test
+    public void testUpdateOrderStatus(){
+        System.out.println(requestPageService.updateOrderStatus("1", 2));
+    }
+    @Test
+    public void testLoadUserOrders(){
+        requestPageService.loadUserOrders(1001).forEach(System.out::println);
     }
 }
