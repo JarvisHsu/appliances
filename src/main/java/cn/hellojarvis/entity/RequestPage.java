@@ -7,6 +7,7 @@ package cn.hellojarvis.entity;
  * @create 2020/08/11 22:28
  */
 public class RequestPage {
+    private Integer orderId;
     private Integer goodsId;
     private Integer userId;
     private Integer addrId;
@@ -18,7 +19,8 @@ public class RequestPage {
     @Override
     public String toString() {
         return "RequestPage{" +
-                "goodsId=" + goodsId +
+                "orderId=" + orderId +
+                ", goodsId=" + goodsId +
                 ", userId=" + userId +
                 ", addrId=" + addrId +
                 ", price=" + price +
@@ -26,6 +28,14 @@ public class RequestPage {
                 ", requestDate='" + requestDate + '\'' +
                 ", updateDate='" + updateDate + '\'' +
                 '}';
+    }
+
+    public Integer getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Integer orderId) {
+        this.orderId = orderId;
     }
 
     public Double getPrice() {
