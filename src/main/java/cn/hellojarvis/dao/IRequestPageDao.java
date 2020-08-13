@@ -3,7 +3,6 @@ package cn.hellojarvis.dao;
 import cn.hellojarvis.entity.RequestPage;
 import cn.hellojarvis.entity.UserAddress;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,4 +19,6 @@ public interface IRequestPageDao {
     public RequestPage loadAnOrderByIds(Map<String,Integer> map);
     public List<RequestPage> loadUserOrders(Integer userId);
     public int updateOrderStatus(Map<String,Object> map);
+    public RequestPage loadNewestOrder();
+    public int addAComment(Map<String,Object> map);
 }

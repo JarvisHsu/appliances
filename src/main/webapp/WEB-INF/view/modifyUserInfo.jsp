@@ -3,9 +3,38 @@
 <html>
 <head>
     <title>modifyUserInfo</title>
-    <link rel="stylesheet" href="/CSS/CommonStyle">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/CommonStyle.css">
 </head>
-
+<style>
+    .board {
+        width: 400px;
+        height: auto;
+        background: rgba(0, 0, 0, 0.1);
+        box-shadow: 0 15px 25px 0 rgba(0, 0, 0, 0.6);
+        padding: 40px;
+        z-index: 1;
+        box-sizing: border-box;
+    }
+    .Info {
+        width: 200px;
+        height: 50px;
+        font-size: 30px;
+        background: transparent;
+        border: none;
+        outline: none;
+    }
+    .bubble-legend-symbol {
+        margin: 15px auto 0;
+        width: 100px;
+        height: 40px;
+        border-radius: 30px;
+        font-size: 20px;
+        cursor: pointer;
+        outline: none;
+        border-bottom: 1px solid black;
+        background: transparent;
+    }
+</style>
 <script src="${pageContext.request.contextPath}/jQuery/jquery-3.5.1.js" type="text/javascript"></script>
 <body>
 <div class="board">
@@ -56,8 +85,8 @@
                     性别
                 </td>
                 <td>
-                    <input type="radio" class="userGender" id="man" name="UserSex" value="男">男&nbsp;&nbsp;&nbsp;
-                    <input type="radio" class="userGender" id="woman" name="UserSex" value="女">女
+                    <input type="radio" style="cursor: pointer;" class="userGender" id="man" name="UserSex" value="男">男&nbsp;&nbsp;&nbsp;
+                    <input type="radio" style="cursor: pointer;" class="userGender" id="woman" name="UserSex" value="女">女
                 </td>
             </tr>
             <tr>
@@ -65,7 +94,7 @@
                     生日
                 </td>
                 <td>
-                    <input class="Info" style="font-size: 20px" id="userBirthday" name="userBirthday" type="date"
+                    <input class="Info" style="font-size: 20px;cursor: pointer;" id="userBirthday" name="userBirthday" type="date"
                            min="1970-01-01" value="${sessionScope.UserInfo.userBirthday}"
                            autocomplete="off" required="required">
                 </td>

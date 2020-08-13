@@ -10,4 +10,7 @@
     <select id="loadUser" resultMap="userResult" parameterType="userLogin">
         select * from userlogin where userId=#{userId} and userPwd=md5(#{userPwd})
     </select>
+    <update id="modifyPwd" parameterType="userLogin">
+        update userlogin set userPwd=md5(#{userPwd}) where userId=#{userId}
+    </update>
 </mapper>

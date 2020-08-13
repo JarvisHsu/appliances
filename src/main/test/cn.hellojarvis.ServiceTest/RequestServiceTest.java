@@ -35,4 +35,8 @@ public class RequestServiceTest {
     public void testLoadUserOrders(){
         requestPageService.loadUserOrders(1001).forEach(System.out::println);
     }
+    @Test
+    public void testAddAComment(){
+        requestPageService.addAComment(1,"你好，我是客户1");
+    }
 }

@@ -88,9 +88,7 @@ create table haveGoods
     goodsId int     not null,
     userId  int     not null,
     status  char(1) not null, #1，已购买
-    CONSTRAINT PK_HAVEGOODS primary key (goodsId, userId),
-    constraint FK_HAVEUSER foreign key (userId) references userlogin (userId),
-    constraint FK_HAVEGOODS foreign key (goodsId) references goods (goodsId)
+    CONSTRAINT PK_HAVEGOODS primary key (goodsId, userId)
 );
 
 insert into haveGoods
@@ -115,7 +113,8 @@ create table userAddr
     area          varchar(8),
     address       varchar(32),
     contactNumber varchar(32),
-    CONSTRAINT PK_ADDRID primary key (addrId)
+    CONSTRAINT PK_ADDRID primary key (addrId),
+    CONSTRAINT FK_ADDRUSER FOREIGN KEY (userId) REFERENCES userinfo (userId)
 ) auto_increment 1000;
 
 drop procedure if exists proc_userAddr;
@@ -161,24 +160,32 @@ call proc_userAddr();
 # 请求维修的订单
 create table requestPage
 (
-    orderId     int auto_increment,                     #订单Id
+    orderId     int auto_increment,                    #订单Id
     goodsId     int            not null,               #产品Id
     userId      int            not null,               #客户Id
-    addrId      int            not null,               #客户地址
+    addrId      int            not null,               #地址Id
     price       decimal(10, 2) not null,               #价格
-    status      char(1)        not null,               #0，废弃；1，成功；2，正在进行,3，未支付；
+    status      char(1)        not null,               #0，废弃；1，成功；2，已派单,3，未支付；4，正在进行；5.已评论
+    fixId       int,                                   #负责技工
+    senderId    int,                                   #负责客服
+    comment     varchar(128),                          #评论信息
     requestTime datetime       not null,               #请求时间
     updateTime  datetime       not null default now(), #更新时间
     constraint PK_REQUEST primary key (orderId),
-    constraint FK_REUSER foreign key (userId) references userlogin (userId),
+    constraint FK_REUSER foreign key (userId) references userinfo (userId),
     constraint FK_REGOODS foreign key (goodsId) references goods (goodsId),
-    constraint FK_READDR foreign key (addrId) references userAddr (addrId)
+    constraint FK_READDR foreign key (addrId) references userAddr (addrId),
+    constraint FK_REFIX foreign key (fixId) references userinfo (userId),
+    constraint FK_RESEND foreign key (senderId) references userinfo (userId)
 );
 
 insert into requestPage
-values (default,501, 1001, 1001, 8.4, '2', now(), default),
-       (default,502, 1001, 1002, 7.8, '0', now(), default),
-       (default,501, 1002, 1005, 9.2, '1', now(), default);
+values (default, 501, 1001, 1001, 8.4, '2', 1003, 1009, null,now(), default),
+       (default, 502, 1001, 1002, 7.8, '4', 1003, 1008, null,now(), default),
+       (default, 502, 1001, 1002, 7.8, '1', 1003, 1008, null,now(), default),
+       (default, 502, 1001, 1002, 7.8, '0', null, null, null,now(), default),
+       (default, 502, 1001, 1002, 7.8, '5', 1006, 1009, '服务很好，给你们个赞',now(), default),
+       (default, 501, 1002, 1005, 9.2, '5', 1006, 1009, '服务很好，给你们个赞',now(), default);
 
 create table PayAccount
 (
@@ -189,7 +196,7 @@ create table PayAccount
 );
 
 insert into PayAccount
-values (1001, md5('123'), default),
-       (1002, md5('123'), default),
-       (1004, md5('123'), default),
-       (1005, md5('123'), default);
+values (1001, md5('123456'), default),
+       (1002, md5('123456'), default),
+       (1004, md5('123456'), default),
+       (1005, md5('123456'), default);

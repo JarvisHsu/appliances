@@ -14,6 +14,7 @@ public class UserAddress {
     private String area;
     private String address;
     private String contactNumber;
+    //外键表 用户信息表（暂无必要）
 
     @Override
     public String toString() {

@@ -33,11 +33,16 @@
         <id column="addrId" property="addrId"/>
         <result column="price" property="price"/>
         <result column="status" property="status"/>
+        <result column="fixId" property="fixId"/>
+        <result column="senderId" property="senderId"/>
+        <result column="comment" property="comment"/>
         <result column="requestTime" property="requestDate"/>
         <result column="updateTime" property="updateDate"/>
-        <association property="userInfo" column="userId" select="cn.hellojarvis.dao.IUserInfoDao.getUserInfo"/>
+        <association property="client" column="userId" select="cn.hellojarvis.dao.IUserInfoDao.getUserInfo"/>
         <association property="goods" column="goodsId" select="cn.hellojarvis.dao.IGoodsDao.loadGoodById"/>
         <association property="userAddress" column="addrId" select="cn.hellojarvis.dao.IRequestPageDao.loadUserAddressById"/>
+        <association property="fixer" column="fixId" select="cn.hellojarvis.dao.IUserInfoDao.getUserInfo"/>
+        <association property="sender" column="senderId" select="cn.hellojarvis.dao.IUserInfoDao.getUserInfo"/>
     </resultMap>
     <select id="loadAnOrderByIds" parameterType="map" resultMap="orderResult">
         select *
@@ -60,4 +65,11 @@
         insert into requestpage (goodsId, userId, addrId, price, status, requestTime, updateTime)
         values (#{goodsId}, #{userId}, #{addrId}, #{price}, #{status}, now(), now());
     </insert>
+    <select id="loadNewestOrder" resultMap="orderResult">
+        SELECT * FROM requestpage ORDER BY orderId desc LIMIT 0,1;
+    </select>
+
+    <update id="addAComment" parameterType="map">
+        update requestpage set comment=#{comment},status='5' where orderId = #{orderId}
+    </update>
 </mapper>

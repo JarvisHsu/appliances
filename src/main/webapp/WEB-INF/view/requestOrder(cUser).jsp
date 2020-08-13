@@ -1,31 +1,25 @@
 <%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <%--用户请求一个订单--%>
     <title>请求订单</title>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/CommonStyle.css">
 </head>
 <style>
-    * {
-        padding: 0;
-        margin: 0;
+    input{
+        background: transparent;
+        outline: none;
     }
-
-    a {
-        text-decoration: none;
+    td{
+        font-size: 15px;
     }
-
-    body {
-        height: 100vh;
-        background: linear-gradient(#04B4AE, #D8D8D8, #58ACFA);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 16px;
-        color: #190707;
+    tr{
+        line-height: 30px;
     }
-
+    th, td, tr {
+        text-align: center;
+    }
     .goods {
         width: 650px;
         background: rgba(0, 0, 0, 0.1);
@@ -42,26 +36,6 @@
         padding: 40px;
         z-index: 1;
         box-sizing: border-box;
-    }
-
-    table {
-        width: 100%;
-        height: auto;
-    }
-
-    th, td, tr {
-        text-align: center;
-    }
-
-    tr {
-        line-height: 30px;
-    }
-
-    h2 {
-        text-align: center;
-        color: #ffffff;
-        margin-bottom: 30px;
-        cursor: default;
     }
 </style>
 <body onload="error()">
@@ -86,8 +60,8 @@
                     </td>
                 </tr>
             </C:forEach>
-            <input id="back1" type="button" value="返回">
-            <input id="next1" type="button" value="下一步">
+            <input id="back1" style="cursor: pointer;" type="button" value="返回">
+            <input id="next1" style="cursor: pointer;" type="button" value="下一步">
         </table>
     </div>
 </C:if>
@@ -110,11 +84,11 @@
                     <td>${addrList.area}</td>
                     <td>${addrList.address}</td>
                     <td>${addrList.contactNumber}</td>
-                    <td><input id="addrId" type="radio" name="addrIdCheck" value="${addrList.addrId}">选择</td>
+                    <td><input id="addrId" style="cursor: pointer;" type="radio" name="addrIdCheck" value="${addrList.addrId}">选择</td>
                 </tr>
             </C:forEach>
-            <input id="back2" type="button" value="返回">
-            <input id="next2" type="button" value="下一步">
+            <input id="back2" style="cursor: pointer;" type="button" value="返回">
+            <input id="next2" style="cursor: pointer;" type="button" value="下一步">
         </table>
     </div>
 </C:if>
@@ -136,11 +110,14 @@
             </tr>
             <tr>
                 <th>订单状态</th>
-                <td><C:if test="${requestScope.order.status=='3'}">
-                    未支付
+                <td><C:if test="${requestScope.order.status=='4'}">
+                    正在进行
+                </C:if>
+                    <C:if test="${requestScope.order.status=='3'}">
+                        未支付
                 </C:if>
                     <C:if test="${requestScope.order.status=='2'}">
-                        正在进行
+                        已派单
                     </C:if>
                     <C:if test="${requestScope.order.status=='1'}">
                         已完成
@@ -149,8 +126,8 @@
                         已废弃
                     </C:if></td>
             </tr>
-            <input id="cancel" type="button" value="取消订单">
-            <input id="commit" type="button" value="确认订单">
+            <input id="cancel" style="cursor: pointer;" type="button" value="取消订单">
+            <input id="commit" style="cursor: pointer;" type="button" value="确认订单">
         </table>
     </div>
 </C:if>
@@ -176,7 +153,7 @@
         } else {
             alert("请选择产品!")
         }
-    })
+    });
     //提交地址
     $("#back2").click(function () {
         post("loadUserGoods");
@@ -198,10 +175,19 @@
     });
     //取消订单
     $("#cancel").click(function () {
-        var parames = ['0',${requestScope.order.orderId}]
-        post("cancelAnOrder",parames);
+        var status='0';
+        var orderId = '${requestScope.order.orderId}';
+        $.post("cancelAnOrder",{"status":status,"orderId":orderId},function (data){
+            if (data == 'true'){
+                alert("您已取消订单，即将返回首页");
+                post("getUserInfo");
+            }else {
+                alert("顶单取消失败，你可以不进行确认操作，等待订单自动过期");
+            }
+        });
     });
     $("#commit").click(function () {
+        alert("您已确认订单，维修师傅将会在24小时内联系您询问具体情况，如有其它问题，请联系我们。")
         post("getUserInfo");
     });
 

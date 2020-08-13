@@ -17,6 +17,7 @@ public class UserInfo {
     private String userBirthday;
     private String createDate;
     private String updateDate;
+    //外键表 角色表 和 登录表（暂时不用）
     private Role role = new Role();
 
     @Override

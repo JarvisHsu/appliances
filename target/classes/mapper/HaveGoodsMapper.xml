@@ -8,11 +8,27 @@
         <result column="goodsName" property="goodsName"/>
         <result column="goodsInfo" property="goodsInfo"/>
     </resultMap>
+    <resultMap id="userInfoResult" type="userInfo">
+        <id column="userId" property="userId"/>
+        <result column="roleId" property="roleId"/>
+        <result column="userName" property="userName"/>
+        <result column="userPhone" property="userPhone"/>
+        <result column="userGender" property="userGender"/>
+        <result column="userBirth" property="userBirthday"/>
+        <association property="role" select="cn.hellojarvis.dao.IRoleDao.getRoleById" column="roleId"/>
+    </resultMap>
     <select id="loadUserGoods" resultMap="goodsResult" parameterType="int">
         select *
         from havegoods,
              goods
         where goods.goodsId = havegoods.goodsId
           and userId = #{userId}
+    </select>
+    <select id="loadGoodUsers" resultMap="userInfoResult" parameterType="int">
+        select *
+        from havegoods,
+             userinfo
+        where userinfo.userId = havegoods.userId
+          and goodsId = #{goodsId}
     </select>
 </mapper>

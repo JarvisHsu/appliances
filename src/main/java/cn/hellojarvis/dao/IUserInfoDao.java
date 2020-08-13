@@ -13,4 +13,5 @@ import java.util.List;
 public interface IUserInfoDao {
     public UserInfo getUserInfo(Integer userId);
     public boolean modifyUserInfo(UserInfo userInfo);
+    public boolean createAnUser(UserInfo userInfo);
 }

@@ -1,13 +1,8 @@
 package cn.hellojarvis.controller;
 
-import cn.hellojarvis.entity.Goods;
-import cn.hellojarvis.entity.RequestPage;
-import cn.hellojarvis.entity.UserAddress;
-import cn.hellojarvis.entity.UserInfo;
-import cn.hellojarvis.service.impl.GoodsServiceImpl;
-import cn.hellojarvis.service.impl.HaveGoodsServiceImpl;
-import cn.hellojarvis.service.impl.RequestPageServiceImpl;
-import cn.hellojarvis.service.impl.UserInfoServiceImpl;
+import cn.hellojarvis.entity.*;
+import cn.hellojarvis.service.*;
+import cn.hellojarvis.service.impl.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,13 +23,15 @@ import java.util.List;
 @Controller("C_UserOperationController")
 public class C_UserOperationController {
     @Autowired
-    private RequestPageServiceImpl requestPageService;
+    private IRequestPageService requestPageService;
     @Autowired
-    private HaveGoodsServiceImpl haveGoodsService;
+    private IHaveGoodService haveGoodsService;
     @Autowired
-    private UserInfoServiceImpl userInfoService;
+    private IUserInfoService userInfoService;
     @Autowired
-    private GoodsServiceImpl goodsService;
+    private IGoodsService goodsService;
+    @Autowired
+    private IPayAccountService payAccountService;
 
     @RequestMapping("/loadUserGoods")
     public ModelAndView loadUserGoods(HttpServletRequest request) {
@@ -42,6 +39,7 @@ public class C_UserOperationController {
         request.getSession().removeAttribute("reqGoodsId");
         modelAndView.setViewName("index");
         UserInfo userInfo = (UserInfo) request.getSession().getAttribute("UserInfo");
+        System.out.println(userInfo);
         List<Goods> goodsList = haveGoodsService.loadUserGoods(userInfo.getUserId());
         if (goodsList != null) {
             request.setAttribute("goodsList", goodsList);
@@ -79,15 +77,12 @@ public class C_UserOperationController {
         requestPage.setUserId(userId);
         boolean bool = requestPageService.createAnOrder(requestPage);
         if (bool) {
-            RequestPage order = requestPageService.loadAnOrderByIds(addrId, goodsId, userId);
+            RequestPage order = requestPageService.loadNewestOrder();
             request.setAttribute("order", order);
             Goods goods = goodsService.loadGoodById(goodsId);
             request.setAttribute("goods", goods);
             UserAddress userAddress = requestPageService.loadUserAddressById(addrId);
             request.setAttribute("address", userAddress);
-            System.out.println(goods);
-            System.out.println(userAddress);
-            System.out.println(order);
         } else {
             request.setAttribute("ErrorMessage", "订单创建失败");
         }
@@ -95,20 +90,34 @@ public class C_UserOperationController {
     }
 
     @RequestMapping("/cancelAnOrder")
-    public ModelAndView cancelAnOrder(HttpServletRequest request) {
-        String status = request.getParameter("0");
-        Integer orderId = Integer.valueOf(request.getParameter("1"));
+    public void cancelAnOrder(HttpServletRequest request,HttpServletResponse response,String status,Integer orderId) throws IOException {
         boolean b = requestPageService.updateOrderStatus(status, orderId);
-        return new ModelAndView("index");
+        response.getWriter().print(b ?"true":"false");
+        response.getWriter().flush();
     }
+
     @RequestMapping("/loadOrdersByUserId")
     public ModelAndView loadOrdersByUserId(HttpServletRequest request){
         UserInfo userInfo = (UserInfo) request.getSession().getAttribute("UserInfo");
         Integer userId = userInfo.getUserId();
+        System.out.println(userId);
         List<RequestPage> requestPages = requestPageService.loadUserOrders(userId);
-        requestPages.forEach(System.out::println);
         request.setAttribute("pageList",requestPages);
+        System.out.println(requestPages);
         return new ModelAndView("viewOrder");
     }
+    @RequestMapping("/addAComment")
+    public ModelAndView addAComment(HttpServletRequest request){
+        Integer orderId = Integer.valueOf(request.getParameter("0"));
+        String comment = request.getParameter("1");
+        boolean b = requestPageService.addAComment(orderId, comment);
+        return new ModelAndView("redirect:loadOrdersByUserId");
+    }
 
+    @RequestMapping("/checkPayAccount")
+    public void checkPayAccount(HttpServletRequest request, HttpServletResponse response, PayAccount payAccount) throws IOException {
+        boolean bool = payAccountService.checkAccount(payAccount);
+        response.getWriter().print(bool?"1":"0");
+        response.getWriter().flush();
+    }
 }

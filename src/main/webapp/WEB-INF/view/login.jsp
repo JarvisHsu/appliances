@@ -5,6 +5,7 @@
     <title>Login</title>
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/Image/favicon.ico">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/LoginTable/LoginStyle.css">
+    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=66577228" charset="UTF-8"></script>
 </head>
 <body >
 <div id="top-image">

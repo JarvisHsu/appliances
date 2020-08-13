@@ -4,6 +4,7 @@ import cn.hellojarvis.entity.RequestPage;
 import cn.hellojarvis.entity.UserAddress;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by IntelliJ IDEA.
@@ -18,4 +19,6 @@ public interface IRequestPageService {
      public RequestPage loadAnOrderByIds(Integer addrId,Integer goodsId,Integer userId);
      public List<RequestPage> loadUserOrders(Integer userId);
      public boolean updateOrderStatus(String status,Integer orderId);
+     public RequestPage loadNewestOrder();
+     public boolean addAComment(Integer orderId,String comment);
 }

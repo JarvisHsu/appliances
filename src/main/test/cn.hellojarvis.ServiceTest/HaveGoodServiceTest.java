@@ -23,5 +23,9 @@ public class HaveGoodServiceTest {
     public void testLoadUserGoods(){
         haveGoodsService.loadUserGoods(1001).forEach(System.out::println);
     }
+    @Test
+    public void testLoadGoodsUsers(){
+        haveGoodsService.loadGoodUsers(501).forEach(System.out::println);
+    }
 
 }

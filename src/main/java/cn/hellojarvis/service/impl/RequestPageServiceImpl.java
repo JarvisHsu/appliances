@@ -61,4 +61,17 @@ public class RequestPageServiceImpl implements IRequestPageService {
         map.put("orderId",orderId);
         return requestPageDao.updateOrderStatus(map)!=0;
     }
+
+    @Override
+    public RequestPage loadNewestOrder() {
+        return requestPageDao.loadNewestOrder();
+    }
+
+    @Override
+    public boolean addAComment(Integer orderId, String comment) {
+        Map<String,Object> map = new HashMap<>();
+        map.put("orderId",orderId);
+        map.put("comment",comment);
+        return requestPageDao.addAComment(map)!=0;
+    }
 }

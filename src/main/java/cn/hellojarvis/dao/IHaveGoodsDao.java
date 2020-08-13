@@ -1,6 +1,7 @@
 package cn.hellojarvis.dao;
 
 import cn.hellojarvis.entity.Goods;
+import cn.hellojarvis.entity.UserInfo;
 
 import java.util.List;
 
@@ -12,4 +13,5 @@ import java.util.List;
  */
 public interface IHaveGoodsDao {
     public List<Goods> loadUserGoods(int userId);
+    public List<UserInfo> loadGoodUsers(int goodsId);
 }
