@@ -1,8 +1,11 @@
 package cn.hellojarvis.dao;
 
+import cn.hellojarvis.entity.RequestPage;
 import cn.hellojarvis.entity.UserAddress;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by IntelliJ IDEA.
@@ -12,4 +15,7 @@ import java.util.List;
  */
 public interface IRequestPageDao {
     public List<UserAddress> loadUserAddress(Integer userId);
+    public int createAnOrder(RequestPage requestPage);
+    public UserAddress loadUserAddressById(Integer addrId);
+    public RequestPage loadAnOrderByIds(Map<String,Integer> map);
 }

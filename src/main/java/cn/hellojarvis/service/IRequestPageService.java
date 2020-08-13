@@ -1,5 +1,6 @@
 package cn.hellojarvis.service;
 
+import cn.hellojarvis.entity.RequestPage;
 import cn.hellojarvis.entity.UserAddress;
 
 import java.util.List;
@@ -12,4 +13,7 @@ import java.util.List;
  */
 public interface IRequestPageService {
      List<UserAddress> loadUserAddress(Integer userId);
+     public boolean createAnOrder(RequestPage requestPage);
+     public UserAddress loadUserAddressById(Integer addrId);
+     public RequestPage loadAnOrderByIds(Integer addrId,Integer goodsId,Integer userId);
 }

@@ -22,4 +22,8 @@ public class RequestServiceTest {
     public void testLoadUserAddress(){
         requestPageService.loadUserAddress(1001).forEach(System.out::println);
     }
+    @Test
+    public void testLoadAnOrder(){
+        System.out.println(requestPageService.loadAnOrderByIds(1002, 503, 1001));
+    }
 }

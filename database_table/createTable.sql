@@ -161,6 +161,7 @@ call proc_userAddr();
 # 请求维修的订单
 create table requestPage
 (
+    orderId     int auto_increment,                     #订单Id
     goodsId     int            not null,               #产品Id
     userId      int            not null,               #客户Id
     addrId      int            not null,               #客户地址
@@ -168,16 +169,16 @@ create table requestPage
     status      char(1)        not null,               #0，废弃；1，成功；2，正在进行,3，未支付；
     requestTime datetime       not null,               #请求时间
     updateTime  datetime       not null default now(), #更新时间
-    constraint PK_REQUEST primary key (goodsId, userId, addrId),
+    constraint PK_REQUEST primary key (orderId),
     constraint FK_REUSER foreign key (userId) references userlogin (userId),
     constraint FK_REGOODS foreign key (goodsId) references goods (goodsId),
     constraint FK_READDR foreign key (addrId) references userAddr (addrId)
 );
 
 insert into requestPage
-values (501, 1001, 1001, 8.4, '2', now(), default),
-       (502, 1001, 1002, 7.8, '0', now(), default),
-       (501, 1002, 1005, 9.2, '1', now(), default);
+values (default,501, 1001, 1001, 8.4, '2', now(), default),
+       (default,502, 1001, 1002, 7.8, '0', now(), default),
+       (default,501, 1002, 1005, 9.2, '1', now(), default);
 
 create table PayAccount
 (

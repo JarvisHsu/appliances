@@ -9,46 +9,46 @@
     </root>
     <schema id="2" parent="1" name="appliances">
       <Current>1</Current>
-      <Collation>utf8mb4_0900_ai_ci</Collation>
-    </schema>
-    <schema id="3" parent="1" name="bookmanagement">
       <Collation>utf8_general_ci</Collation>
     </schema>
-    <schema id="4" parent="1" name="db1117">
-      <Collation>utf8mb4_0900_ai_ci</Collation>
+    <schema id="3" parent="1" name="crawldata">
+      <Collation>utf8_general_ci</Collation>
     </schema>
-    <schema id="5" parent="1" name="db1118">
-      <Collation>utf8mb4_0900_ai_ci</Collation>
+    <schema id="4" parent="1" name="db1228">
+      <Collation>utf8_general_ci</Collation>
     </schema>
-    <schema id="6" parent="1" name="db1122">
-      <Collation>utf8mb4_0900_ai_ci</Collation>
+    <schema id="5" parent="1" name="dbsql0311">
+      <Collation>utf8_general_ci</Collation>
     </schema>
-    <schema id="7" parent="1" name="db1124">
-      <Collation>utf8mb4_0900_ai_ci</Collation>
+    <schema id="6" parent="1" name="dbsql6.4test">
+      <Collation>utf8_general_ci</Collation>
     </schema>
-    <schema id="8" parent="1" name="db1126">
-      <Collation>utf8mb4_0900_ai_ci</Collation>
+    <schema id="7" parent="1" name="dbsql_xzy0">
+      <Collation>utf8_general_ci</Collation>
+    </schema>
+    <schema id="8" parent="1" name="e-commerce">
+      <Collation>utf8_general_ci</Collation>
     </schema>
     <schema id="9" parent="1" name="information_schema">
       <Collation>utf8_general_ci</Collation>
     </schema>
     <schema id="10" parent="1" name="mysql">
+      <Collation>utf8_general_ci</Collation>
+    </schema>
+    <schema id="11" parent="1" name="performance_schema">
       <Collation>utf8mb4_0900_ai_ci</Collation>
     </schema>
-    <schema id="11" parent="1" name="mytest">
+    <schema id="12" parent="1" name="servlet_jsp_practice">
+      <Collation>utf8_general_ci</Collation>
+    </schema>
+    <schema id="13" parent="1" name="sys">
       <Collation>utf8mb4_0900_ai_ci</Collation>
     </schema>
-    <schema id="12" parent="1" name="performance_schema">
-      <Collation>utf8mb4_0900_ai_ci</Collation>
+    <schema id="14" parent="1" name="test">
+      <Collation>utf8_general_ci</Collation>
     </schema>
-    <schema id="13" parent="1" name="sakila">
-      <Collation>utf8mb4_0900_ai_ci</Collation>
-    </schema>
-    <schema id="14" parent="1" name="sys">
-      <Collation>utf8mb4_0900_ai_ci</Collation>
-    </schema>
-    <schema id="15" parent="1" name="world">
-      <Collation>utf8mb4_0900_ai_ci</Collation>
+    <schema id="15" parent="1" name="xust">
+      <Collation>utf8_general_ci</Collation>
     </schema>
     <collation id="16" parent="1" name="armscii8_bin">
       <Charset>armscii8</Charset>
@@ -927,290 +927,290 @@ SELECT|sys.sys_config:null
 </ObjectGrants>
     </user>
     <user id="291" parent="1" name="root">
-      <Host>localhost</Host>
+      <Host>%</Host>
       <ObjectGrants>SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,RELOAD,SHUTDOWN,PROCESS,FILE,REFERENCES,INDEX,ALTER,SHOW DATABASES,SUPER,CREATE TEMPORARY TABLES,LOCK TABLES,EXECUTE,REPLICATION SLAVE,REPLICATION CLIENT,CREATE VIEW,SHOW VIEW,CREATE ROUTINE,ALTER ROUTINE,CREATE USER,EVENT,TRIGGER,CREATE TABLESPACE,CREATE ROLE,DROP ROLE!
-APPLICATION_PASSWORD_ADMIN,AUDIT_ADMIN,BACKUP_ADMIN,BINLOG_ADMIN,BINLOG_ENCRYPTION_ADMIN,CLONE_ADMIN,CONNECTION_ADMIN,ENCRYPTION_KEY_ADMIN,GROUP_REPLICATION_ADMIN,INNODB_REDO_LOG_ARCHIVE,PERSIST_RO_VARIABLES_ADMIN,REPLICATION_APPLIER,REPLICATION_SLAVE_ADMIN,RESOURCE_GROUP_ADMIN,RESOURCE_GROUP_USER,ROLE_ADMIN,SERVICE_CONNECTION_ADMIN,SESSION_VARIABLES_ADMIN,SET_USER_ID,SYSTEM_USER,SYSTEM_VARIABLES_ADMIN,TABLE_ENCRYPTION_ADMIN,XA_RECOVER_ADMIN!
-ALL PRIVILEGES|bookmanagement:null!
 </ObjectGrants>
     </user>
-    <user id="292" parent="1" name="xujiawei">
-      <Host>localhost</Host>
-      <ObjectGrants>SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,RELOAD,SHUTDOWN,PROCESS,FILE,REFERENCES,INDEX,ALTER,SHOW DATABASES,SUPER,CREATE TEMPORARY TABLES,LOCK TABLES,EXECUTE,REPLICATION SLAVE,REPLICATION CLIENT,CREATE VIEW,SHOW VIEW,CREATE ROUTINE,ALTER ROUTINE,CREATE USER,EVENT,TRIGGER!
-ALL PRIVILEGES|bookmanagement:null!
-</ObjectGrants>
-    </user>
-    <table id="293" parent="2" name="goods"/>
-    <table id="294" parent="2" name="havegoods"/>
-    <table id="295" parent="2" name="payaccount"/>
-    <table id="296" parent="2" name="requestpage"/>
-    <table id="297" parent="2" name="role"/>
-    <table id="298" parent="2" name="useraddr"/>
-    <table id="299" parent="2" name="userinfo"/>
-    <table id="300" parent="2" name="userlogin"/>
-    <routine id="301" parent="2" name="proc_userAddr">
-      <SourceTextLength>1242</SourceTextLength>
-      <Definer>root@localhost</Definer>
+    <table id="292" parent="2" name="goods"/>
+    <table id="293" parent="2" name="havegoods"/>
+    <table id="294" parent="2" name="payaccount"/>
+    <table id="295" parent="2" name="requestpage"/>
+    <table id="296" parent="2" name="role"/>
+    <table id="297" parent="2" name="useraddr"/>
+    <table id="298" parent="2" name="userinfo"/>
+    <table id="299" parent="2" name="userlogin"/>
+    <routine id="300" parent="2" name="proc_userAddr">
+      <SourceTextLength>952</SourceTextLength>
+      <Definer>root@%</Definer>
       <RoutineKind>procedure</RoutineKind>
     </routine>
-    <column id="302" parent="293" name="goodsId">
+    <column id="301" parent="292" name="goodsId">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="303" parent="293" name="goodsName">
+    <column id="302" parent="292" name="goodsName">
       <Position>2</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="304" parent="293" name="goodsInfo">
+    <column id="303" parent="292" name="goodsInfo">
       <Position>3</Position>
       <DataType>varchar(128)|0s</DataType>
     </column>
-    <key id="305" parent="293" name="PRIMARY">
+    <key id="304" parent="292" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>goodsId</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="306" parent="294" name="goodsId">
+    <column id="305" parent="293" name="goodsId">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="307" parent="294" name="userId">
+    <column id="306" parent="293" name="userId">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="308" parent="294" name="status">
+    <column id="307" parent="293" name="status">
       <Position>3</Position>
       <DataType>char(1)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="309" parent="294" name="FK_HAVEUSER">
+    <index id="308" parent="293" name="FK_HAVEUSER">
       <ColNames>userId</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="310" parent="294" name="PRIMARY">
+    <key id="309" parent="293" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>goodsId
 userId</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="311" parent="294" name="FK_HAVEGOODS">
+    <foreign-key id="310" parent="293" name="FK_HAVEGOODS">
       <ColNames>goodsId</ColNames>
       <RefTableName>goods</RefTableName>
       <RefColNames>goodsId</RefColNames>
     </foreign-key>
-    <foreign-key id="312" parent="294" name="FK_HAVEUSER">
+    <foreign-key id="311" parent="293" name="FK_HAVEUSER">
       <ColNames>userId</ColNames>
       <RefTableName>userlogin</RefTableName>
       <RefColNames>userId</RefColNames>
     </foreign-key>
-    <column id="313" parent="295" name="userId">
+    <column id="312" parent="294" name="userId">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="314" parent="295" name="payPwd">
+    <column id="313" parent="294" name="payPwd">
       <Position>2</Position>
       <DataType>varchar(128)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="315" parent="295" name="balance">
+    <column id="314" parent="294" name="balance">
       <Position>3</Position>
       <DataType>decimal(10,2 digit)|0s</DataType>
       <DefaultExpression>1000.00</DefaultExpression>
     </column>
-    <key id="316" parent="295" name="PRIMARY">
+    <key id="315" parent="294" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>userId</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="317" parent="296" name="goodsId">
+    <column id="316" parent="295" name="orderId">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="318" parent="296" name="userId">
+    <column id="317" parent="295" name="goodsId">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="319" parent="296" name="addrId">
+    <column id="318" parent="295" name="userId">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="320" parent="296" name="price">
+    <column id="319" parent="295" name="addrId">
       <Position>4</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="320" parent="295" name="price">
+      <Position>5</Position>
       <DataType>decimal(10,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="321" parent="296" name="status">
-      <Position>5</Position>
+    <column id="321" parent="295" name="status">
+      <Position>6</Position>
       <DataType>char(1)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="322" parent="296" name="requestTime">
-      <Position>6</Position>
+    <column id="322" parent="295" name="requestTime">
+      <Position>7</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="323" parent="296" name="updateTime">
-      <Position>7</Position>
+    <column id="323" parent="295" name="updateTime">
+      <Position>8</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
     </column>
-    <index id="324" parent="296" name="FK_REUSER">
+    <index id="324" parent="295" name="FK_REGOODS">
+      <ColNames>goodsId</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="325" parent="295" name="FK_REUSER">
       <ColNames>userId</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="325" parent="296" name="FK_READDR">
+    <index id="326" parent="295" name="FK_READDR">
       <ColNames>addrId</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="326" parent="296" name="PRIMARY">
+    <key id="327" parent="295" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>goodsId
-userId
-addrId</ColNames>
+      <ColNames>orderId</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="327" parent="296" name="FK_REGOODS">
+    <foreign-key id="328" parent="295" name="FK_REGOODS">
       <ColNames>goodsId</ColNames>
       <RefTableName>goods</RefTableName>
       <RefColNames>goodsId</RefColNames>
     </foreign-key>
-    <foreign-key id="328" parent="296" name="FK_REUSER">
+    <foreign-key id="329" parent="295" name="FK_REUSER">
       <ColNames>userId</ColNames>
       <RefTableName>userlogin</RefTableName>
       <RefColNames>userId</RefColNames>
     </foreign-key>
-    <foreign-key id="329" parent="296" name="FK_READDR">
+    <foreign-key id="330" parent="295" name="FK_READDR">
       <ColNames>addrId</ColNames>
       <RefTableName>useraddr</RefTableName>
       <RefColNames>addrId</RefColNames>
     </foreign-key>
-    <column id="330" parent="297" name="roleId">
+    <column id="331" parent="296" name="roleId">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="331" parent="297" name="roleName">
+    <column id="332" parent="296" name="roleName">
       <Position>2</Position>
       <DataType>varchar(12)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="332" parent="297" name="PRIMARY">
+    <key id="333" parent="296" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>roleId</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="333" parent="298" name="addrId">
+    <column id="334" parent="297" name="addrId">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="334" parent="298" name="userId">
+    <column id="335" parent="297" name="userId">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="335" parent="298" name="province">
+    <column id="336" parent="297" name="province">
       <Position>3</Position>
       <DataType>varchar(8)|0s</DataType>
     </column>
-    <column id="336" parent="298" name="city">
+    <column id="337" parent="297" name="city">
       <Position>4</Position>
       <DataType>varchar(8)|0s</DataType>
     </column>
-    <column id="337" parent="298" name="area">
+    <column id="338" parent="297" name="area">
       <Position>5</Position>
       <DataType>varchar(8)|0s</DataType>
     </column>
-    <column id="338" parent="298" name="address">
+    <column id="339" parent="297" name="address">
       <Position>6</Position>
       <DataType>varchar(32)|0s</DataType>
     </column>
-    <column id="339" parent="298" name="contactNumber">
+    <column id="340" parent="297" name="contactNumber">
       <Position>7</Position>
       <DataType>varchar(32)|0s</DataType>
     </column>
-    <key id="340" parent="298" name="PRIMARY">
+    <key id="341" parent="297" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>addrId</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="341" parent="299" name="userId">
+    <column id="342" parent="298" name="userId">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="342" parent="299" name="roleId">
+    <column id="343" parent="298" name="roleId">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="343" parent="299" name="userName">
+    <column id="344" parent="298" name="userName">
       <Position>3</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="344" parent="299" name="userPhone">
+    <column id="345" parent="298" name="userPhone">
       <Position>4</Position>
       <DataType>varchar(32)|0s</DataType>
     </column>
-    <column id="345" parent="299" name="userGender">
+    <column id="346" parent="298" name="userGender">
       <Position>5</Position>
       <DataType>char(1)|0s</DataType>
     </column>
-    <column id="346" parent="299" name="userBirth">
+    <column id="347" parent="298" name="userBirth">
       <Position>6</Position>
       <DataType>varchar(32)|0s</DataType>
     </column>
-    <column id="347" parent="299" name="createDate">
+    <column id="348" parent="298" name="createDate">
       <Position>7</Position>
       <DataType>datetime|0s</DataType>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
     </column>
-    <column id="348" parent="299" name="updateDate">
+    <column id="349" parent="298" name="updateDate">
       <Position>8</Position>
       <DataType>datetime|0s</DataType>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
     </column>
-    <index id="349" parent="299" name="FK_userId">
+    <index id="350" parent="298" name="FK_userId">
       <ColNames>userId</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="350" parent="299" name="FK_roleID">
+    <index id="351" parent="298" name="FK_roleID">
       <ColNames>roleId</ColNames>
       <Type>btree</Type>
     </index>
-    <foreign-key id="351" parent="299" name="FK_userId">
+    <foreign-key id="352" parent="298" name="FK_userId">
       <ColNames>userId</ColNames>
       <RefTableName>userlogin</RefTableName>
       <RefColNames>userId</RefColNames>
     </foreign-key>
-    <foreign-key id="352" parent="299" name="FK_roleID">
+    <foreign-key id="353" parent="298" name="FK_roleID">
       <ColNames>roleId</ColNames>
       <RefTableName>role</RefTableName>
       <RefColNames>roleId</RefColNames>
     </foreign-key>
-    <column id="353" parent="300" name="userId">
+    <column id="354" parent="299" name="userId">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="354" parent="300" name="userPwd">
+    <column id="355" parent="299" name="userPwd">
       <Position>2</Position>
       <DataType>varchar(128)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="355" parent="300" name="PRIMARY">
+    <key id="356" parent="299" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>userId</ColNames>
       <Primary>1</Primary>

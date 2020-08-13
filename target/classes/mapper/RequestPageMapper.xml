@@ -13,6 +13,38 @@
         <result column="contactNumber" property="contactNumber"/>
     </resultMap>
     <select id="loadUserAddress" resultMap="addressResult" parameterType="Integer">
-        select * from useraddr where useraddr.userId = #{userId}
+        select *
+        from useraddr
+        where useraddr.userId = #{userId}
     </select>
+    <select id="loadUserAddressById" resultMap="addressResult" parameterType="Integer">
+        select *
+        from useraddr
+        where addrId = #{addrId}
+    </select>
+    <parameterMap id="orderParameter" type="map">
+        <parameter property="addrId"/>
+        <parameter property="goodsId"/>
+        <parameter property="userId"/>
+    </parameterMap>
+    <resultMap id="orderResult" type="requestPage">
+        <id column="goodsId" property="goodsId"/>
+        <id column="userId" property="userId"/>
+        <id column="addrId" property="addrId"/>
+        <result column="price" property="price"/>
+        <result column="status" property="status"/>
+        <result column="requestTime" property="requestDate"/>
+        <result column="updateTime" property="updateDate"/>
+    </resultMap>
+    <select id="loadAnOrderByIds" parameterType="map" resultMap="orderResult">
+        select *
+        from requestpage
+        where addrId = #{addrId}
+          and goodsId = #{goodsId}
+          and userId = #{userId}
+    </select>
+    <insert id="createAnOrder" parameterType="requestPage">
+        insert into requestpage (goodsId,userId,addrId,price,status,requestTime,updateTime)
+            values (#{goodsId}, #{userId}, #{addrId}, #{price}, #{status}, now(), now());
+    </insert>
 </mapper>

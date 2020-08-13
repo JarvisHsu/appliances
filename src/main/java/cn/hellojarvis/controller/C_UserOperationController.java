@@ -1,10 +1,13 @@
 package cn.hellojarvis.controller;
 
 import cn.hellojarvis.entity.Goods;
+import cn.hellojarvis.entity.RequestPage;
 import cn.hellojarvis.entity.UserAddress;
 import cn.hellojarvis.entity.UserInfo;
+import cn.hellojarvis.service.impl.GoodsServiceImpl;
 import cn.hellojarvis.service.impl.HaveGoodsServiceImpl;
 import cn.hellojarvis.service.impl.RequestPageServiceImpl;
+import cn.hellojarvis.service.impl.UserInfoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,15 +31,20 @@ public class C_UserOperationController {
     private RequestPageServiceImpl requestPageService;
     @Autowired
     private HaveGoodsServiceImpl haveGoodsService;
+    @Autowired
+    private UserInfoServiceImpl userInfoService;
+    @Autowired
+    private GoodsServiceImpl goodsService;
 
     @RequestMapping("/loadUserGoods")
-    public ModelAndView loadUserGoods(HttpServletRequest request){
+    public ModelAndView loadUserGoods(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
+        request.getSession().removeAttribute("reqGoodsId");
         modelAndView.setViewName("index");
         UserInfo userInfo = (UserInfo) request.getSession().getAttribute("UserInfo");
         List<Goods> goodsList = haveGoodsService.loadUserGoods(userInfo.getUserId());
-        if (goodsList!=null){
-            request.getSession().setAttribute("goodsList",goodsList);
+        if (goodsList != null) {
+            request.setAttribute("goodsList", goodsList);
             modelAndView.setViewName("requestOrder(cUser)");
         }
         return modelAndView;
@@ -45,13 +53,55 @@ public class C_UserOperationController {
     @RequestMapping("/loadUserAddress")
     public ModelAndView loadUserAddress(HttpServletRequest request) throws IOException {
         ModelAndView modelAndView = new ModelAndView();
+        //产品id
+        if (request.getParameter("0") != null) {
+            request.getSession().setAttribute("reqGoodsId", request.getParameter("0"));
+        }
         UserInfo userInfo = (UserInfo) request.getSession().getAttribute("UserInfo");
         List<UserAddress> userAddrList = requestPageService.loadUserAddress(userInfo.getUserId());
-        if (userAddrList!=null){
-            request.getSession().setAttribute("userAddrList",userAddrList);
+        if (userAddrList != null) {
+            request.setAttribute("userAddrList", userAddrList);
             modelAndView.setViewName("requestOrder(cUser)");
         }
         return modelAndView;
+    }
+
+    @RequestMapping("/createOrder")
+    public ModelAndView createOrder(HttpServletRequest request) {
+        //地址Id
+        Integer addrId = Integer.valueOf(request.getParameter("0"));
+        UserInfo userInfo = (UserInfo) request.getSession().getAttribute("UserInfo");
+        Integer userId = userInfo.getUserId();
+        Integer goodsId = Integer.parseInt((String) request.getSession().getAttribute("reqGoodsId"));
+        RequestPage requestPage = new RequestPage();
+        requestPage.setGoodsId(goodsId);
+        requestPage.setAddrId(addrId);
+        requestPage.setUserId(userId);
+        boolean bool = requestPageService.createAnOrder(requestPage);
+        if (bool) {
+            RequestPage order = requestPageService.loadAnOrderByIds(addrId, goodsId, userId);
+            request.setAttribute("order", order);
+            Goods goods = goodsService.loadGoodById(goodsId);
+            request.setAttribute("goods", goods);
+            UserAddress userAddress = requestPageService.loadUserAddressById(addrId);
+            request.setAttribute("address", userAddress);
+            System.out.println(goods);
+            System.out.println(userAddress);
+            System.out.println(order);
+        } else {
+            request.setAttribute("ErrorMessage", "订单创建失败");
+        }
+        return new ModelAndView("requestOrder(cUser)");
+    }
+
+    @RequestMapping("/loadUserOrders")
+    public ModelAndView loadUserOrders() {
+        return new ModelAndView();
+    }
+
+    @RequestMapping("/loadAnOrder")
+    public ModelAndView loadAnOrder(HttpServletRequest request) {
+        return new ModelAndView();
     }
 
 }
