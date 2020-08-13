@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hellojarvis.dao.IRequestPageDao">
+    <resultMap id="addressResult" type="userAddress">
+        <id column="addrId" property="addrId"/>
+        <result column="userId" property="userId"/>
+        <result column="province" property="province"/>
+        <result column="city" property="city"/>
+        <result column="area" property="area"/>
+        <result column="address" property="address"/>
+        <result column="contactNumber" property="contactNumber"/>
+    </resultMap>
+    <select id="loadUserAddress" resultMap="addressResult" parameterType="Integer">
+        select * from useraddr where useraddr.userId = #{userId}
+    </select>
+</mapper>

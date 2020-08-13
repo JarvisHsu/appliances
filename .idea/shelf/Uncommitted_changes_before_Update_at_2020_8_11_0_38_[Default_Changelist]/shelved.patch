@@ -1,0 +1,214 @@
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"CompilerConfiguration\">\n    <annotationProcessing>\n      <profile name=\"Maven default annotation processors profile\" enabled=\"true\">\n        <sourceOutputDir name=\"target/generated-sources/annotations\" />\n        <sourceTestOutputDir name=\"target/generated-test-sources/test-annotations\" />\n        <outputRelativeToContentRoot value=\"true\" />\n        <module name=\"App\" />\n      </profile>\n    </annotationProcessing>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/compiler.xml	(revision 26ddf535dae9cdb0255233e8c84c9219fd662ec2)
++++ .idea/compiler.xml	(date 1597077344759)
+@@ -7,6 +7,7 @@
+         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+         <outputRelativeToContentRoot value="true" />
+         <module name="App" />
++        <module name="appliances" />
+       </profile>
+     </annotationProcessing>
+   </component>
+Index: .idea/appliances.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/appliances.iml	(date 1597054977444)
++++ .idea/appliances.iml	(date 1597054977444)
+@@ -0,0 +1,2 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="JAVA_MODULE" version="4" />
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\n  <component name=\"FrameworkDetectionExcludesConfiguration\">\n    <file type=\"web\" url=\"file://$PROJECT_DIR$\" />\n  </component>\n  <component name=\"MavenProjectsManager\">\n    <option name=\"originalFiles\">\n      <list>\n        <option value=\"$PROJECT_DIR$/pom.xml\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_1_8\" project-jdk-name=\"1.8\" project-jdk-type=\"JavaSDK\">\n    <output url=\"file://$PROJECT_DIR$/out\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/misc.xml	(revision 26ddf535dae9cdb0255233e8c84c9219fd662ec2)
++++ .idea/misc.xml	(date 1597055765283)
+@@ -4,6 +4,9 @@
+   <component name="FrameworkDetectionExcludesConfiguration">
+     <file type="web" url="file://$PROJECT_DIR$" />
+   </component>
++  <component name="JavaScriptSettings">
++    <option name="languageLevel" value="ES6" />
++  </component>
+   <component name="MavenProjectsManager">
+     <option name="originalFiles">
+       <list>
+@@ -11,7 +14,7 @@
+       </list>
+     </option>
+   </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/out" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/encodings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"Encoding\">\n    <file url=\"file://$PROJECT_DIR$\" charset=\"UTF-8\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/encodings.xml	(revision 26ddf535dae9cdb0255233e8c84c9219fd662ec2)
++++ .idea/encodings.xml	(date 1597054977467)
+@@ -2,5 +2,7 @@
+ <project version="4">
+   <component name="Encoding">
+     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
++    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
++    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">\n    <modelVersion>4.0.0</modelVersion>\n\n    <groupId>appliances</groupId>\n    <artifactId>appliances</artifactId>\n    <version>1.0-SNAPSHOT</version>\n    <packaging>war</packaging>\n\n    <name>appliances Maven Webapp</name>\n    <!-- FIXME change it to the project's website -->\n    <url>http://www.example.com</url>\n\n    <properties>\n        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>\n        <maven.compiler.source>1.8</maven.compiler.source>\n        <maven.compiler.target>1.8</maven.compiler.target>\n    </properties>\n\n    <dependencies>\n        <dependency>\n            <groupId>junit</groupId>\n            <artifactId>junit</artifactId>\n            <version>4.12</version>\n            <scope>test</scope>\n        </dependency>\n        <dependency>\n            <groupId>org.springframework</groupId>\n            <artifactId>spring-beans</artifactId>\n            <version>5.2.7.RELEASE</version>\n        </dependency>\n        <dependency>\n            <groupId>org.springframework</groupId>\n            <artifactId>spring-core</artifactId>\n            <version>5.2.7.RELEASE</version>\n        </dependency>\n        <dependency>\n            <groupId>org.springframework</groupId>\n            <artifactId>spring-context</artifactId>\n            <version>5.2.7.RELEASE</version>\n        </dependency>\n        <dependency>\n            <groupId>org.springframework</groupId>\n            <artifactId>spring-aop</artifactId>\n            <version>5.2.7.RELEASE</version>\n        </dependency>\n        <dependency>\n            <groupId>org.springframework</groupId>\n            <artifactId>spring-test</artifactId>\n            <version>5.2.7.RELEASE</version>\n        </dependency>\n        <dependency>\n            <groupId>org.springframework</groupId>\n            <artifactId>spring-jdbc</artifactId>\n            <version>5.2.2.RELEASE</version>\n        </dependency>\n        <dependency>\n            <groupId>mysql</groupId>\n            <artifactId>mysql-connector-java</artifactId>\n            <version>8.0.18</version>\n        </dependency>\n        <dependency>\n            <groupId>org.springframework</groupId>\n            <artifactId>spring-web</artifactId>\n            <version>5.1.9.RELEASE</version>\n        </dependency>\n        <dependency>\n            <groupId>org.springframework</groupId>\n            <artifactId>spring-webmvc</artifactId>\n            <version>5.1.9.RELEASE</version>\n        </dependency>\n        <dependency>\n            <groupId>org.mybatis</groupId>\n            <artifactId>mybatis-spring</artifactId>\n            <version>2.0.2</version>\n        </dependency>\n        <dependency>\n            <groupId>org.mybatis</groupId>\n            <artifactId>mybatis</artifactId>\n            <version>3.5.2</version>\n        </dependency>\n        <dependency>\n            <groupId>org.springframework</groupId>\n            <artifactId>spring-aspects</artifactId>\n            <version>5.2.2.RELEASE</version>\n        </dependency>\n        <dependency>\n            <groupId>javax.servlet</groupId>\n            <artifactId>javax.servlet-api</artifactId>\n            <version>4.0.1</version>\n            <scope>provided</scope>\n        </dependency>\n        <dependency>\n            <groupId>cn.personal</groupId>\n            <artifactId>Captcha</artifactId>\n            <version>1.0</version>\n        </dependency>\n        <dependency>\n            <groupId>javax.servlet</groupId>\n            <artifactId>jstl</artifactId>\n            <version>1.2</version>\n        </dependency>\n    </dependencies>\n\n    <build>\n        <finalName>appliances</finalName>\n        <plugins>\n            <plugin>\n                <artifactId>maven-clean-plugin</artifactId>\n                <version>3.1.0</version>\n            </plugin>\n            <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->\n            <plugin>\n                <artifactId>maven-resources-plugin</artifactId>\n                <version>3.0.2</version>\n            </plugin>\n            <plugin>\n                <artifactId>maven-compiler-plugin</artifactId>\n                <version>3.8.0</version>\n            </plugin>\n            <plugin>\n                <artifactId>maven-surefire-plugin</artifactId>\n                <version>2.22.1</version>\n            </plugin>\n            <plugin>\n                <artifactId>maven-war-plugin</artifactId>\n                <version>3.2.2</version>\n            </plugin>\n            <plugin>\n                <artifactId>maven-install-plugin</artifactId>\n                <version>2.5.2</version>\n            </plugin>\n            <plugin>\n                <artifactId>maven-deploy-plugin</artifactId>\n                <version>2.8.2</version>\n            </plugin>\n            <plugin>\n                <groupId>org.apache.tomcat.maven</groupId>\n                <artifactId>tomcat7-maven-plugin</artifactId>\n                <configuration>\n                    <port>8088</port>\n                    <uriEncoding>utf-8</uriEncoding>\n                    <path>/</path>\n                </configuration>\n                <version>2.2</version>\n            </plugin>\n        </plugins>\n    </build>\n</project>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- pom.xml	(revision 26ddf535dae9cdb0255233e8c84c9219fd662ec2)
++++ pom.xml	(date 1597056203371)
+@@ -106,36 +106,40 @@
+ 
+     <build>
+         <finalName>appliances</finalName>
+-        <plugins>
+-            <plugin>
+-                <artifactId>maven-clean-plugin</artifactId>
+-                <version>3.1.0</version>
+-            </plugin>
+-            <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
+-            <plugin>
+-                <artifactId>maven-resources-plugin</artifactId>
+-                <version>3.0.2</version>
+-            </plugin>
+-            <plugin>
+-                <artifactId>maven-compiler-plugin</artifactId>
+-                <version>3.8.0</version>
+-            </plugin>
+-            <plugin>
+-                <artifactId>maven-surefire-plugin</artifactId>
+-                <version>2.22.1</version>
+-            </plugin>
+-            <plugin>
+-                <artifactId>maven-war-plugin</artifactId>
+-                <version>3.2.2</version>
+-            </plugin>
+-            <plugin>
+-                <artifactId>maven-install-plugin</artifactId>
+-                <version>2.5.2</version>
+-            </plugin>
+-            <plugin>
+-                <artifactId>maven-deploy-plugin</artifactId>
+-                <version>2.8.2</version>
+-            </plugin>
++        <pluginManagement>
++            <plugins>
++                <plugin>
++                    <artifactId>maven-clean-plugin</artifactId>
++                    <version>3.1.0</version>
++                </plugin>
++                <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
++                <plugin>
++                    <artifactId>maven-resources-plugin</artifactId>
++                    <version>3.0.2</version>
++                </plugin>
++                <plugin>
++                    <artifactId>maven-compiler-plugin</artifactId>
++                    <version>3.8.0</version>
++                </plugin>
++                <plugin>
++                    <artifactId>maven-surefire-plugin</artifactId>
++                    <version>2.22.1</version>
++                </plugin>
++                <plugin>
++                    <artifactId>maven-war-plugin</artifactId>
++                    <version>3.2.2</version>
++                </plugin>
++                <plugin>
++                    <artifactId>maven-install-plugin</artifactId>
++                    <version>2.5.2</version>
++                </plugin>
++                <plugin>
++                    <artifactId>maven-deploy-plugin</artifactId>
++                    <version>2.8.2</version>
++                </plugin>
++            </plugins>
++        </pluginManagement>
++        <plugins>
+             <plugin>
+                 <groupId>org.apache.tomcat.maven</groupId>
+                 <artifactId>tomcat7-maven-plugin</artifactId>
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/vcs.xml	(date 1597022929840)
++++ .idea/vcs.xml	(date 1597022929840)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/jarRepositories.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/jarRepositories.xml	(date 1597055013047)
++++ .idea/jarRepositories.xml	(date 1597055013047)
+@@ -0,0 +1,20 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="RemoteRepositoriesConfiguration">
++    <remote-repository>
++      <option name="id" value="central" />
++      <option name="name" value="Maven Central repository" />
++      <option name="url" value="https://repo1.maven.org/maven2" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="jboss.community" />
++      <option name="name" value="JBoss Community repository" />
++      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="central" />
++      <option name="name" value="Central Repository" />
++      <option name="url" value="https://maven.aliyun.com/repository/public" />
++    </remote-repository>
++  </component>
++</project>
+\ No newline at end of file
+Index: src/main/java/cn/hellojarvis/controller/UserInfoController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package cn.hellojarvis.controller;\n\nimport cn.hellojarvis.entity.UserInfo;\nimport cn.hellojarvis.entity.UserLogin;\nimport cn.hellojarvis.service.impl.UserInfoServiceImpl;\nimport org.springframework.beans.factory.annotation.Autowired;\nimport org.springframework.stereotype.Controller;\nimport org.springframework.web.bind.annotation.RequestMapping;\nimport org.springframework.web.servlet.ModelAndView;\n\nimport javax.servlet.http.HttpServletRequest;\nimport javax.servlet.http.HttpServletResponse;\nimport java.io.IOException;\n\n/**\n * Created by IntelliJ IDEA.\n *\n * @author : JarvisHsu\n * @create 2020/08/09 13:54\n */\n@Controller(\"UserInfoController\")\npublic class UserInfoController {\n    @Autowired\n    private UserInfoServiceImpl userInfoServiceImpl;\n\n    @RequestMapping(\"/getUserInfo\")\n    public ModelAndView getUserInfo(HttpServletRequest request, HttpServletResponse response) throws IOException {\n        UserLogin user = (UserLogin) request.getSession().getAttribute(\"User\");\n        UserInfo userInfo = userInfoServiceImpl.loadUserInfoById(user.getUserId());\n        request.getSession().setAttribute(\"UserInfo\",userInfo);\n        return new ModelAndView(\"index\");\n    }\n    @RequestMapping(\"/modifyUserInfo\")\n    public void modifyUserInfo(UserInfo userInfo,HttpServletRequest request,HttpServletResponse response) throws IOException {\n        boolean b = userInfoServiceImpl.modifyUserInfo(userInfo);\n        if (b){\n            request.getSession().setAttribute(\"UserInfo\",userInfoServiceImpl.loadUserInfoById(userInfo.getUserId()));\n            response.getWriter().print(\"1\");\n        }else {\n            response.getWriter().print(\"0\");\n        }\n        response.getWriter().flush();\n    }\n\n    @RequestMapping(\"/indexView\")\n    public ModelAndView indexView(HttpServletRequest request){\n        UserLogin userLogin = new UserLogin();\n        userLogin.setUserId(1001);\n        userLogin.setUserPwd(\"123\");\n        request.getSession().setAttribute(\"User\",userLogin);\n        return new ModelAndView(\"redirect:getUserInfo\");\n    }\n    @RequestMapping(\"/modifyView\")\n    public ModelAndView modifyView(){\n        return new ModelAndView(\"modifyUserInfo\");\n    }\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/cn/hellojarvis/controller/UserInfoController.java	(revision 26ddf535dae9cdb0255233e8c84c9219fd662ec2)
++++ src/main/java/cn/hellojarvis/controller/UserInfoController.java	(date 1597023448699)
+@@ -54,5 +54,4 @@
+     public ModelAndView modifyView(){
+         return new ModelAndView("modifyUserInfo");
+     }
+-
+ }
