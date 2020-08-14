@@ -68,8 +68,10 @@
     <select id="loadNewestOrder" resultMap="orderResult">
         SELECT * FROM requestpage ORDER BY orderId desc LIMIT 0,1;
     </select>
-
     <update id="addAComment" parameterType="map">
         update requestpage set comment=#{comment},status='5' where orderId = #{orderId}
     </update>
+    <select id="loadAnOrderByOrderId" resultMap="orderResult" parameterType="Integer">
+        select * from requestpage where orderId=#{orderId}
+    </select>
 </mapper>

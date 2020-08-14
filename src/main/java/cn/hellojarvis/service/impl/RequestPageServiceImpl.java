@@ -74,4 +74,9 @@ public class RequestPageServiceImpl implements IRequestPageService {
         map.put("comment",comment);
         return requestPageDao.addAComment(map)!=0;
     }
+
+    @Override
+    public RequestPage loadAnOrderByOrderId(Integer orderId) {
+        return requestPageDao.loadAnOrderByOrderId(orderId);
+    }
 }

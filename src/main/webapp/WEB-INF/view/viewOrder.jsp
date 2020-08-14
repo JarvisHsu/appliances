@@ -59,6 +59,14 @@
         background: linear-gradient(30deg, #E6E6E6, #F8E0E0, #CECEF6, #BDBDBD, #F3F781);
         cursor: pointer;
     }
+    .balance{
+        width: 650px;
+        background: rgba(0, 0, 0, 0.1);
+        box-shadow: 0 15px 25px 0 rgba(0, 0, 0, 0.6);
+        padding: 40px;
+        z-index: 1;
+        box-sizing: border-box;
+    }
 </style>
 <body>
 <C:if test="${sessionScope.UserInfo.roleId==1}">
@@ -201,9 +209,50 @@
             var payCommit = $("<input class='payUserButton' style='margin-right: 50px;' type='button' id='payCommit' value='提交'>").click(function () {
                 var userId = $("#userId").val();
                 var payPwd = $("#payPwd").val();
-                $.post("checkPayAccount", {"userId": userId, "payPwd": payPwd}, function (data) {
-                    if (data === '1') {
+                $.post("checkPayAccount", {"userId": userId, "payPwd": payPwd,"orderId":pay}, function (data) {
+                    if (data !== '0') {
+                        var lastMoney = data.substring(0,data.indexOf(','));
+                        var shouldPay = data.substring(data.indexOf(',')+1,data.length);
+                        $(".payBoard").hide();
+                        var Balance = $("<div class='balance'>");
+                        var h2 = $("<h2>");
+                        h2.text("支付确认");
+                        var tablePay = $("<table border='1' cellspacing='0'>");
+                        var tr_one = $("<tr>");
+                        var th_head1 = $("<th>");
+                        var td_head1 = $("<td>");
+                        var tr_two = $("<tr>");
+                        var th_head2 = $("<th>");
+                        var td_head2 = $("<td>");
+                        var backPay = $("<input type='button' style='cursor: pointer' id='backPay' value='返回'>").click(function () {
+                            $(".Balance").remove();
+                            $(".payBoard").show();
+                            input_pwd.text("")
 
+                        });
+                        var commitPay = $("<input type='button' id='commitPay' value='提交'>").click(function () {
+                            var myOrderId = pay;
+                            var myShouldPay = shouldPay;
+                            var myUserId = userId;
+                            var myLastMoney = lastMoney;
+                            var payParam = [myOrderId,myShouldPay,myUserId,myLastMoney]
+                            post("payTheOrder",payParam);
+                        });
+                        td_head1.text(lastMoney+'元');
+                        th_head1.text("账户余额");
+                        th_head2.text("应付金额");
+                        td_head2.text(shouldPay+'元');
+                        tr_two.append(th_head2);
+                        tr_two.append(td_head2);
+                        tr_one.append(th_head1);
+                        tr_one.append(td_head1);
+                        tablePay.append(tr_one);
+                        tablePay.append(tr_two);
+                        Balance.append(backPay);
+                        Balance.append(commitPay);
+                        Balance.append(h2);
+                        Balance.append(tablePay);
+                        $("body").append(Balance);
                     } else {
                         alert("用户名或密码错误");
                     }

@@ -17,7 +17,12 @@ public class PayAccountServiceImpl implements IPayAccountService {
     @Autowired
     private IPayAccountDao payAccountDao;
     @Override
-    public boolean checkAccount(PayAccount payAccount) {
-        return payAccountDao.loadAccount(payAccount)!=null;
+    public PayAccount checkAccount(PayAccount payAccount) {
+        return payAccountDao.loadAccount(payAccount);
+    }
+
+    @Override
+    public boolean modifyBalance(PayAccount payAccount) {
+        return payAccountDao.modifyBalance(payAccount)!=0;
     }
 }

@@ -115,9 +115,23 @@ public class C_UserOperationController {
     }
 
     @RequestMapping("/checkPayAccount")
-    public void checkPayAccount(HttpServletRequest request, HttpServletResponse response, PayAccount payAccount) throws IOException {
-        boolean bool = payAccountService.checkAccount(payAccount);
-        response.getWriter().print(bool?"1":"0");
+    public void checkPayAccount(HttpServletRequest request, HttpServletResponse response, PayAccount payAccount,Integer orderId) throws IOException {
+        PayAccount account = payAccountService.checkAccount(payAccount);
+        RequestPage requestPage = requestPageService.loadAnOrderByOrderId(orderId);
+        response.getWriter().print(account!=null?account.getBalance()+","+requestPage.getPrice():"0");
         response.getWriter().flush();
+    }
+    @RequestMapping("/payTheOrder")
+    public ModelAndView payTheOrder(HttpServletRequest request){
+        Integer orderId = Integer.valueOf(request.getParameter("0"));
+        Double shouldPay = Double.valueOf(request.getParameter("1"));
+        Integer userId = Integer.valueOf(request.getParameter("2"));
+        Double lastMoney = Double.valueOf(request.getParameter("3"));
+        if (lastMoney<shouldPay){
+            request.setAttribute("payErrorMessage","账户余额不足");
+        }else {
+
+        }
+        return new ModelAndView("viewOrder");
     }
 }

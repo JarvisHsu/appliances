@@ -21,4 +21,5 @@ public interface IRequestPageService {
      public boolean updateOrderStatus(String status,Integer orderId);
      public RequestPage loadNewestOrder();
      public boolean addAComment(Integer orderId,String comment);
+     public RequestPage loadAnOrderByOrderId(Integer orderId);
 }

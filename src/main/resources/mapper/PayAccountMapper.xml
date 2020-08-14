@@ -11,4 +11,7 @@
     <select id="loadAccount" resultMap="payResult" parameterType="payAccount">
         select * from payaccount where userId=#{userId} and payPwd=md5(#{payPwd})
     </select>
+    <update id="modifyBalance" parameterType="payAccount">
+        update payaccount set balance = #{balance} where userId=#{userId}
+    </update>
 </mapper>

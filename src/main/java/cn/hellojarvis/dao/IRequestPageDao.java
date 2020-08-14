@@ -21,4 +21,5 @@ public interface IRequestPageDao {
     public int updateOrderStatus(Map<String,Object> map);
     public RequestPage loadNewestOrder();
     public int addAComment(Map<String,Object> map);
+    public RequestPage loadAnOrderByOrderId(Integer orderId);
 }

@@ -10,4 +10,5 @@ import cn.hellojarvis.entity.PayAccount;
  */
 public interface IPayAccountDao {
     public PayAccount loadAccount(PayAccount payAccount);
+    public int modifyBalance(PayAccount payAccount);
 }
