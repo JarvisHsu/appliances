@@ -14,4 +14,5 @@ public interface IUserInfoDao {
     public UserInfo getUserInfo(Integer userId);
     public boolean modifyUserInfo(UserInfo userInfo);
     public boolean createAnUser(UserInfo userInfo);
+    public List<UserInfo> loadUserByRoleId(Integer roleId);
 }

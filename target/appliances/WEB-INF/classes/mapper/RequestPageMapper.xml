@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hellojarvis.dao.IRequestPageDao">
+    <resultMap id="addressResult" type="userAddress">
+        <id column="addrId" property="addrId"/>
+        <result column="userId" property="userId"/>
+        <result column="province" property="province"/>
+        <result column="city" property="city"/>
+        <result column="area" property="area"/>
+        <result column="address" property="address"/>
+        <result column="contactNumber" property="contactNumber"/>
+    </resultMap>
+    <select id="loadUserAddress" resultMap="addressResult" parameterType="Integer">
+        select *
+        from useraddr
+        where useraddr.userId = #{userId}
+    </select>
+    <select id="loadUserAddressById" resultMap="addressResult" parameterType="Integer">
+        select *
+        from useraddr
+        where addrId = #{addrId}
+    </select>
+    <parameterMap id="orderParameter" type="map">
+        <parameter property="addrId"/>
+        <parameter property="goodsId"/>
+        <parameter property="userId"/>
+    </parameterMap>
+    <resultMap id="orderResult" type="requestPage">
+        <id column="goodsId" property="goodsId"/>
+        <id column="userId" property="userId"/>
+        <id column="addrId" property="addrId"/>
+        <result column="price" property="price"/>
+        <result column="status" property="status"/>
+        <result column="fixId" property="fixId"/>
+        <result column="senderId" property="senderId"/>
+        <result column="comment" property="comment"/>
+        <result column="requestTime" property="requestDate"/>
+        <result column="updateTime" property="updateDate"/>
+        <association property="client" column="userId" select="cn.hellojarvis.dao.IUserInfoDao.getUserInfo"/>
+        <association property="goods" column="goodsId" select="cn.hellojarvis.dao.IGoodsDao.loadGoodById"/>
+        <association property="userAddress" column="addrId" select="cn.hellojarvis.dao.IRequestPageDao.loadUserAddressById"/>
+        <association property="fixer" column="fixId" select="cn.hellojarvis.dao.IUserInfoDao.getUserInfo"/>
+        <association property="sender" column="senderId" select="cn.hellojarvis.dao.IUserInfoDao.getUserInfo"/>
+    </resultMap>
+    <select id="loadAnOrderByIds" parameterType="map" resultMap="orderResult">
+        select *
+        from requestpage
+        where addrId = #{addrId}
+          and goodsId = #{goodsId}
+          and userId = #{userId}
+    </select>
+    <select id="loadUserOrders" resultMap="orderResult" parameterType="Integer">
+        select *
+        from requestpage
+        where userId = #{userId}
+    </select>
+    <update id="updateOrderStatus" parameterType="map">
+        update requestpage
+        set status = #{status}
+        where orderId = #{orderId}
+    </update>
+    <insert id="createAnOrder" parameterType="requestPage">
+        insert into requestpage (goodsId, userId, addrId, price, status, requestTime, updateTime)
+        values (#{goodsId}, #{userId}, #{addrId}, #{price}, #{status}, now(), now());
+    </insert>
+    <select id="loadNewestOrder" resultMap="orderResult">
+        SELECT * FROM requestpage ORDER BY orderId desc LIMIT 0,1;
+    </select>
+    <update id="addAComment" parameterType="map">
+        update requestpage set comment=#{comment},status='5' where orderId = #{orderId}
+    </update>
+    <select id="loadAnOrderByOrderId" resultMap="orderResult" parameterType="Integer">
+        select * from requestpage where orderId=#{orderId}
+    </select>
+</mapper>

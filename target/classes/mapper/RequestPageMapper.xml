@@ -3,6 +3,7 @@
         PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.hellojarvis.dao.IRequestPageDao">
+    <!--    地址模板-->
     <resultMap id="addressResult" type="userAddress">
         <id column="addrId" property="addrId"/>
         <result column="userId" property="userId"/>
@@ -12,21 +13,25 @@
         <result column="address" property="address"/>
         <result column="contactNumber" property="contactNumber"/>
     </resultMap>
+    <!--    找用户的所有的地址-->
     <select id="loadUserAddress" resultMap="addressResult" parameterType="Integer">
         select *
         from useraddr
         where useraddr.userId = #{userId}
     </select>
+    <!--    找某个地址-->
     <select id="loadUserAddressById" resultMap="addressResult" parameterType="Integer">
         select *
         from useraddr
         where addrId = #{addrId}
     </select>
+    <!--    联查参数-->
     <parameterMap id="orderParameter" type="map">
         <parameter property="addrId"/>
         <parameter property="goodsId"/>
         <parameter property="userId"/>
     </parameterMap>
+    <!--    订单全部的字段-->
     <resultMap id="orderResult" type="requestPage">
         <id column="goodsId" property="goodsId"/>
         <id column="userId" property="userId"/>
@@ -40,10 +45,12 @@
         <result column="updateTime" property="updateDate"/>
         <association property="client" column="userId" select="cn.hellojarvis.dao.IUserInfoDao.getUserInfo"/>
         <association property="goods" column="goodsId" select="cn.hellojarvis.dao.IGoodsDao.loadGoodById"/>
-        <association property="userAddress" column="addrId" select="cn.hellojarvis.dao.IRequestPageDao.loadUserAddressById"/>
+        <association property="userAddress" column="addrId"
+                     select="cn.hellojarvis.dao.IRequestPageDao.loadUserAddressById"/>
         <association property="fixer" column="fixId" select="cn.hellojarvis.dao.IUserInfoDao.getUserInfo"/>
         <association property="sender" column="senderId" select="cn.hellojarvis.dao.IUserInfoDao.getUserInfo"/>
     </resultMap>
+    <!--    查某个订单（废弃）-->
     <select id="loadAnOrderByIds" parameterType="map" resultMap="orderResult">
         select *
         from requestpage
@@ -51,27 +58,61 @@
           and goodsId = #{goodsId}
           and userId = #{userId}
     </select>
+    <!--    查某个用户的所有单子-->
     <select id="loadUserOrders" resultMap="orderResult" parameterType="Integer">
         select *
         from requestpage
         where userId = #{userId}
     </select>
+    <!--    更新某个单子的状态-->
     <update id="updateOrderStatus" parameterType="map">
         update requestpage
         set status = #{status}
         where orderId = #{orderId}
     </update>
+    <!--    创建一个订单-->
     <insert id="createAnOrder" parameterType="requestPage">
         insert into requestpage (goodsId, userId, addrId, price, status, requestTime, updateTime)
         values (#{goodsId}, #{userId}, #{addrId}, #{price}, #{status}, now(), now());
     </insert>
+    <!--    找最新的单子-->
     <select id="loadNewestOrder" resultMap="orderResult">
-        SELECT * FROM requestpage ORDER BY orderId desc LIMIT 0,1;
+        SELECT *
+        FROM requestpage
+        ORDER BY orderId desc
+        LIMIT 0,1;
     </select>
+    <!--    更新一条评论-->
     <update id="addAComment" parameterType="map">
-        update requestpage set comment=#{comment},status='5' where orderId = #{orderId}
+        update requestpage
+        set comment=#{comment},
+            status='5'
+        where orderId = #{orderId}
     </update>
+    <!--    查一张单子-->
     <select id="loadAnOrderByOrderId" resultMap="orderResult" parameterType="Integer">
-        select * from requestpage where orderId=#{orderId}
+        select *
+        from requestpage
+        where orderId = #{orderId}
     </select>
+    <!--    查所有除过废弃和没支付的单子-->
+    <select id="loadAllUsersOrdersWithRequesting" resultMap="orderResult">
+        select *
+        from requestpage
+        where status in ('1', '2', '4', '5');
+    </select>
+    <!--    查某个技工的当前单量-->
+    <select id="loadFixerOrders" parameterType="Integer" resultType="Integer">
+        SELECT count(*)
+        FROM requestpage
+        WHERE fixId = #{fixId}
+          and status = '2';
+    </select>
+    <update id="updateFixSend" parameterType="requestPage">
+        update requestpage
+        set fixId   = #{fixId},
+            senderId=#{senderId},
+            status=#{status}
+        where orderId = #{orderId}
+    </update>
 </mapper>

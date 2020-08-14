@@ -26,4 +26,7 @@
             updateDate=now()
         where userId = #{userId}
     </update>
+    <select id="loadUserByRoleId" resultMap="userInfoResult" parameterType="Integer">
+        select * from userinfo where roleId=#{roleId}
+    </select>
 </mapper>

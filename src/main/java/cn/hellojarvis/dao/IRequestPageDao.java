@@ -22,4 +22,7 @@ public interface IRequestPageDao {
     public RequestPage loadNewestOrder();
     public int addAComment(Map<String,Object> map);
     public RequestPage loadAnOrderByOrderId(Integer orderId);
+    public List<RequestPage> loadAllUsersOrdersWithRequesting();
+    public int loadFixerOrders(Integer fixId);
+    public int updateFixSend(RequestPage requestPage);
 }

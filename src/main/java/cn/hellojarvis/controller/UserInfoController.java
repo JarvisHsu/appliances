@@ -56,8 +56,8 @@ public class UserInfoController {
     public ModelAndView indexView(HttpServletRequest request){
         //连接login后删除下面四行
         UserLogin userLogin = new UserLogin();
-        userLogin.setUserId(1001);
-        userLogin.setUserPwd("123");
+        userLogin.setUserId(1009);
+        userLogin.setUserPwd("789");
         request.getSession().setAttribute("User",userLogin);
         return new ModelAndView("redirect:getUserInfo");
     }

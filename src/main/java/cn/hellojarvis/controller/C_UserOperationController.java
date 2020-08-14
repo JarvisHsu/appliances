@@ -100,7 +100,6 @@ public class C_UserOperationController {
     public ModelAndView loadOrdersByUserId(HttpServletRequest request){
         UserInfo userInfo = (UserInfo) request.getSession().getAttribute("UserInfo");
         Integer userId = userInfo.getUserId();
-        System.out.println(userId);
         List<RequestPage> requestPages = requestPageService.loadUserOrders(userId);
         request.setAttribute("pageList",requestPages);
         System.out.println(requestPages);
@@ -127,11 +126,30 @@ public class C_UserOperationController {
         Double shouldPay = Double.valueOf(request.getParameter("1"));
         Integer userId = Integer.valueOf(request.getParameter("2"));
         Double lastMoney = Double.valueOf(request.getParameter("3"));
+        String password = request.getParameter("4");
         if (lastMoney<shouldPay){
             request.setAttribute("payErrorMessage","账户余额不足");
         }else {
-
+            PayAccount payAccount = new PayAccount();
+            payAccount.setUserId(userId);
+            payAccount.setPayPwd(password);
+            payAccount.setBalance(lastMoney-shouldPay);
+            boolean b = payAccountService.modifyBalance(payAccount);
+            if (b){
+                boolean bool = requestPageService.updateOrderStatus("4", orderId);
+                if (bool){
+                    PayAccount account = payAccountService.checkAccount(payAccount);
+                    Double balance = account.getBalance();
+                    request.setAttribute("payErrorMessage","支付成功,当前账户余额:"+balance);
+                }else {
+                    request.setAttribute("payErrorMessage","未知错误，请重试!");
+                }
+            }else {
+                request.setAttribute("payErrorMessage","未知错误，请重试!");
+            }
         }
+        List<RequestPage> requestPages = requestPageService.loadUserOrders(userId);
+        request.setAttribute("pageList",requestPages);
         return new ModelAndView("viewOrder");
     }
 }

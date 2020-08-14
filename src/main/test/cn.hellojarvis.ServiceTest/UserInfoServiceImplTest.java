@@ -24,4 +24,9 @@ public class UserInfoServiceImplTest {
         Integer userId = 1001;
         System.out.println(userInfoServiceImpl.loadUserInfoById(userId));
     }
+    @Test
+    public void testLoadUserByRoleId(){
+        Integer roleId = 3;
+        System.out.println(userInfoServiceImpl.loadUserByRoleId(roleId));
+    }
 }

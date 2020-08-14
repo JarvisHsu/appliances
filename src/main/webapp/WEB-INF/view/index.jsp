@@ -110,7 +110,7 @@
     </div>
 </div>
 <p style="color: rgba(1,1,1,0.2);position: absolute; bottom: 0;right: 40%;">Created by IntelliJ IDEA.author :
-    JarvisHsu.Version:0.1</p>
+    JarvisHsu.Version:0.1 Beta</p>
 
 
 </body>
@@ -132,10 +132,16 @@
             $("#fun5").text("暂未开通");
         }
         if (str === '客服') {
-            $("#fun1").text("服务请求");
+            $("#fun1").text("服务请求").click(function () {
+                post("loadUsersOrdersWithRequesting")
+            });
             $("#fun2").text("个人信息");
-            $("#fun3").text("派单");
-            $("#fun4").text("查看评论");
+            $("#fun3").text("派单").click(function () {
+                post("loadUsersOrdersWithRequesting")
+            });
+            $("#fun4").text("查看评论").click(function () {
+                post("loadUsersOrdersWithRequesting")
+            });
             $("#fun5").text("暂未开通");
         }
         if (str === '维修人员') {

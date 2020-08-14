@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hellojarvis.dao.IPayAccountDao">
+    <resultMap id="payResult" type="payAccount">
+        <id column="userId" property="userId"/>
+        <result column="payPwd" property="payPwd"/>
+        <result column="balance" property="balance"/>
+    </resultMap>
+    <select id="loadAccount" resultMap="payResult" parameterType="payAccount">
+        select * from payaccount where userId=#{userId} and payPwd=md5(#{payPwd})
+    </select>
+    <update id="modifyBalance" parameterType="payAccount">
+        update payaccount set balance = #{balance} where userId=#{userId}
+    </update>
+</mapper>

@@ -39,4 +39,8 @@ public class RequestServiceTest {
     public void testAddAComment(){
         requestPageService.addAComment(1,"你好，我是客户1");
     }
+    @Test
+    public void testLoadFixerOrders(){
+        System.out.println(requestPageService.loadFixerOrders(1003));
+    }
 }

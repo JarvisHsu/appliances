@@ -22,4 +22,7 @@ public interface IRequestPageService {
      public RequestPage loadNewestOrder();
      public boolean addAComment(Integer orderId,String comment);
      public RequestPage loadAnOrderByOrderId(Integer orderId);
+     public List<RequestPage> loadAllUsersOrdersWithRequesting();
+     public int loadFixerOrders(Integer fixId);
+     public boolean updateFixSend(RequestPage requestPage);
 }

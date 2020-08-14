@@ -2,6 +2,8 @@ package cn.hellojarvis.service;
 
 import cn.hellojarvis.entity.UserInfo;
 
+import java.util.List;
+
 /**
  * Created by IntelliJ IDEA.
  *
@@ -11,4 +13,5 @@ import cn.hellojarvis.entity.UserInfo;
 public interface IUserInfoService {
     public boolean modifyUserInfo(UserInfo userInfo);
     public UserInfo loadUserInfoById(Integer userId);
+    public List<UserInfo> loadUserByRoleId(Integer roleId);
 }

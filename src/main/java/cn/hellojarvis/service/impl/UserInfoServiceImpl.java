@@ -6,6 +6,8 @@ import cn.hellojarvis.service.IUserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by IntelliJ IDEA.
  *
@@ -22,6 +24,10 @@ public class UserInfoServiceImpl implements IUserInfoService {
         return userInfoDao.getUserInfo(userId);
     }
 
+    @Override
+    public List<UserInfo> loadUserByRoleId(Integer roleId) {
+        return userInfoDao.loadUserByRoleId(roleId);
+    }
     @Override
     public boolean modifyUserInfo(UserInfo userInfo) {
         return userInfoDao.modifyUserInfo(userInfo);
