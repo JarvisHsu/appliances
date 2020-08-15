@@ -132,7 +132,14 @@ height: 40px;background: transparent;border-radius: 50px;cursor: pointer;outline
                                 ${pageList.sender.userName}</td>
                         <td style="width: 100px;">
                             <C:if test="${pageList.status=='5'}">
-                                ${pageList.comment.substring(0,3)}...
+                                <C:if test="${pageList.comment!=null}">
+                                    <C:if test="${pageList.comment.length()<4}">
+                                        ${pageList.comment}
+                                    </C:if>
+                                    <C:if test="${pageList.comment.length()>=4}">
+                                        ${pageList.comment.substring(0,3)}...
+                                    </C:if>
+                                </C:if>
                             </C:if>
                             <C:if test="${pageList.status!='5'}">
                                 未评论
@@ -314,6 +321,7 @@ height: 40px;background: transparent;border-radius: 50px;cursor: pointer;outline
                     <th>处理客服</th>
                     <th>联系电话</th>
                     <th>用户地址</th>
+                    <th>创建日期</th>
                     <th>最后更新</th>
                 </tr>
                 <C:forEach items="${requestScope.AllOrders}" var="pageList">
@@ -357,6 +365,7 @@ height: 40px;background: transparent;border-radius: 50px;cursor: pointer;outline
                         <td style="width: 100px;">
                                 ${pageList.userAddress.province}${pageList.userAddress.city}${pageList.userAddress.area}${pageList.userAddress.address}
                         </td>
+                        <td>${pageList.requestDate}</td>
                         <td>${pageList.updateDate}</td>
                     </tr>
                 </C:forEach>
@@ -383,13 +392,21 @@ height: 40px;background: transparent;border-radius: 50px;cursor: pointer;outline
             h2.text("评论板");
             var textarea = $("<textarea name='comText' id='comText' cols='40%' rows='10%' " +
                 "autocomplete='off' style='background: transparent;outline: none;" +
-                "margin:0 auto 15px;display:block;font-size: xx-large;' required maxlength='100' minlength='20'>")
+                "margin:0 auto 15px;display:block;font-size: xx-large;' required='required' maxlength='100' minlength='20'>")
             var comBack = $("<input type='button' style='cursor: pointer' id='comBack' value='返回'>").click(function () {
                 $(".comBoard").remove();
                 $(".Orders").show();
             });
-            var comCommit = $("<input type='button'style='cursor: pointer' id='comCommit' value='提交'>").click(function () {
+            var comCommit = $("<input type='button' style='cursor: pointer' id='comCommit' value='提交'>").click(function () {
                 var comText = $("#comText").val();
+                if (comText==null){
+                    alert("请输入内容");
+                    return ;
+                }
+                if (comText.length<15){
+                    alert("评论不少于15个字")
+                    return ;
+                }
                 var comParam = [comment, comText];
                 post("addAComment", comParam);
             });

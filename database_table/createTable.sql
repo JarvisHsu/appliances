@@ -54,15 +54,15 @@ CREATE table userInfo
 
 INSERT into userInfo
 VALUES (1001, 1, '客户1', '14782577866', '男', '2000-01-15', DEFAULT, DEFAULT),
-       (1005, 2, '维修人员1', '19829817502', '男', '1995-06-23', DEFAULT, DEFAULT),
-       (1007, 3, '客服1', '18327937220', '男', '2001-12-15', DEFAULT, DEFAULT),
+       (1005, 2, '客服1', '19829817502', '男', '1995-06-23', DEFAULT, DEFAULT),
+       (1007, 3, '维修人员1', '18327937220', '男', '2001-12-15', DEFAULT, DEFAULT),
        (1009, 4, '系统管理员', '13387902648', '男', '1982-01-19', DEFAULT, DEFAULT);;
 INSERT into userInfo(userId, roleId, userName)
 VALUES (1002, 1, '客户2'),
        (1003, 1, '客户3'),
        (1004, 1, '客户4'),
-       (1006, 2, '维修人员2'),
-       (1008, 3, '客服2');
+       (1006, 2, '客服2'),
+       (1008, 3, '维修人员2');
 
 
 # 产品表(固定)
@@ -181,8 +181,8 @@ create table requestPage
 );
 
 insert into requestPage
-values (default, 501, 1001, 1001, 12.5, '1', 1005, 1007, null, now(), default),
-       (default, 502, 1001, 1002, 16.0, '5', 1006, 1007, '师傅很专业,不到半个小时就修理完了,给你们点个赞', now(), default),
+values (default, 501, 1001, 1001, 12.5, '1', 1007, 1006, null, now(), default),
+       (default, 502, 1001, 1002, 16.0, '5', 1007, 1005, '师傅很专业,不到半个小时就修理完了,给你们点个赞', now(), default),
        (default, 503, 1001, 1001, 15.3, '0', null, null, null, now(), default),
        (default, 502, 1001, 1003, 18.7, '3', null, null, null, now(), default),
        (default, 501, 1001, 1002, 12.1, '4', null, null, null, now(), default);
