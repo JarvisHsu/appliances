@@ -49,7 +49,7 @@ public class UserLoginController {
         response.getWriter().flush();
     }
 
-    @RequestMapping("loginView")
+    @RequestMapping("/loginView")
     public ModelAndView loginView() {
         return new ModelAndView("login");
     }

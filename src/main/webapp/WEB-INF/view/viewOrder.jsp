@@ -20,8 +20,8 @@
         padding: 40px;
         z-index: 1;
         box-sizing: border-box;
+        margin: 100px auto;
     }
-
     td {
         font-size: 20px;
     }
@@ -70,10 +70,11 @@
     }
 </style>
 <body onload="payErrorMessage()">
-<button style="position: absolute;bottom: 0;right: 0;width: 100px;
+<button  style="position: fixed;bottom: 0;right: 0;width: 100px;
 height: 40px;background: transparent;border-radius: 50px;cursor: pointer;outline: none;"
-        onclick="post('indexView')">首页
+         onclick="post('indexView')">首页
 </button>
+
 <%--客户界面--%>
 <C:if test="${sessionScope.UserInfo.roleId==1}">
     <C:if test="${requestScope.pageList==null}">
@@ -131,7 +132,7 @@ height: 40px;background: transparent;border-radius: 50px;cursor: pointer;outline
                                 ${pageList.sender.userName}</td>
                         <td style="width: 100px;">
                             <C:if test="${pageList.status=='5'}">
-                                ${pageList.comment}
+                                ${pageList.comment.substring(0,3)}...
                             </C:if>
                             <C:if test="${pageList.status!='5'}">
                                 未评论
@@ -301,7 +302,7 @@ height: 40px;background: transparent;border-radius: 50px;cursor: pointer;outline
 <%--管理员界面--%>
 <C:if test="${sessionScope.UserInfo.roleId==4}">
     <C:if test="${requestScope.AllOrders!=null}">
-        <div class="Orders" style="width: 900px;">
+        <div class="Orders" style="width: 1100px;">
             <h2>订单列表</h2>
             <table border="1" cellspacing="0">
                 <tr>

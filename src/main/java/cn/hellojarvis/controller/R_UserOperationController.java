@@ -42,10 +42,11 @@ public class R_UserOperationController {
         request.setAttribute("serviceList",serviceList);
         return new ModelAndView("rootManager");
     }
-    @RequestMapping("loadAllOrders")
+    @RequestMapping("/loadAllOrders")
     public ModelAndView loadAllOrders(HttpServletRequest request){
         List<RequestPage> pageList = requestPageService.loadAllOrders();
         request.setAttribute("AllOrders",pageList);
         return new ModelAndView("viewOrder");
     }
+
 }

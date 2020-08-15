@@ -45,6 +45,12 @@ public class UserInfoController {
         }
         response.getWriter().flush();
     }
+    @RequestMapping("/logOut")
+    public ModelAndView logOut(HttpServletRequest request){
+        request.removeAttribute("");
+        request.getSession().invalidate();
+        return new ModelAndView("login");
+    }
 
     /**
      *

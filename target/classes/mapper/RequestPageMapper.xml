@@ -116,4 +116,7 @@
             status=#{status}
         where orderId = #{orderId}
     </update>
+    <select id="loadAllOrders" resultMap="orderResult">
+        select * from requestpage;
+    </select>
 </mapper>

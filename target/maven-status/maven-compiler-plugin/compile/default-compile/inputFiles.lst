@@ -6,6 +6,7 @@ F:\My programs\Java Programs\大二下课设\数据库课设\项目文件\App\sr
 F:\My programs\Java Programs\大二下课设\数据库课设\项目文件\App\src\main\java\cn\hellojarvis\entity\Goods.java
 F:\My programs\Java Programs\大二下课设\数据库课设\项目文件\App\src\main\java\cn\hellojarvis\service\IPayAccountService.java
 F:\My programs\Java Programs\大二下课设\数据库课设\项目文件\App\src\main\java\cn\hellojarvis\entity\UserLogin.java
+F:\My programs\Java Programs\大二下课设\数据库课设\项目文件\App\src\main\java\cn\hellojarvis\controller\F_UserOperationController.java
 F:\My programs\Java Programs\大二下课设\数据库课设\项目文件\App\src\main\java\cn\hellojarvis\entity\UserInfo.java
 F:\My programs\Java Programs\大二下课设\数据库课设\项目文件\App\src\main\java\cn\hellojarvis\dao\IUserLoginDao.java
 F:\My programs\Java Programs\大二下课设\数据库课设\项目文件\App\src\main\java\cn\hellojarvis\service\impl\RoleServiceImpl.java
@@ -23,6 +24,7 @@ F:\My programs\Java Programs\大二下课设\数据库课设\项目文件\App\sr
 F:\My programs\Java Programs\大二下课设\数据库课设\项目文件\App\src\main\java\cn\hellojarvis\service\impl\UserInfoServiceImpl.java
 F:\My programs\Java Programs\大二下课设\数据库课设\项目文件\App\src\main\java\cn\hellojarvis\service\IUserInfoService.java
 F:\My programs\Java Programs\大二下课设\数据库课设\项目文件\App\src\main\java\cn\hellojarvis\entity\Role.java
+F:\My programs\Java Programs\大二下课设\数据库课设\项目文件\App\src\main\java\cn\hellojarvis\controller\R_UserOperationController.java
 F:\My programs\Java Programs\大二下课设\数据库课设\项目文件\App\src\main\java\cn\hellojarvis\service\impl\UserLoginServiceImpl.java
 F:\My programs\Java Programs\大二下课设\数据库课设\项目文件\App\src\main\java\cn\hellojarvis\service\impl\PayAccountServiceImpl.java
 F:\My programs\Java Programs\大二下课设\数据库课设\项目文件\App\src\main\java\cn\hellojarvis\dao\IHaveGoodsDao.java

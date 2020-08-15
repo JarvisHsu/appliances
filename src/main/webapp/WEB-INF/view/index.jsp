@@ -64,7 +64,7 @@
             <a class="htmleaf-icon icon-htmleaf-home-outline" href="#" title="Home"
                target=""><span> Home</span></a>
             <a class="htmleaf-icon icon-htmleaf-arrow-forward-outline"
-               href="#" title="LogOut" target=""><span> LogOut</span></a>
+               href="#" id="LogOut" title="LogOut" target=""><span> LogOut</span></a>
         </div>
     </header>
     <div class="htmleaf-content bgcolor-8">
@@ -161,14 +161,19 @@
             $("#fun3").text("公司客服").click(function () {
                 post("loadAllService");
             });
-            $("#fun4").text("售后服务");
+            $("#fun4").text("售后服务").click(function (){
+                post("loadAllOrders");
+            });
             $("#fun5").text("暂未开通");
         }
     });
+
     $("#fun2").click(function () {
         post("modifyView");
     });
-
+    $("#LogOut").click(function () {
+        post("logOut");
+    });
     //post请求通用跳转页面
     function post(url, params) {
         // 创建form元素
