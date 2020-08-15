@@ -35,9 +35,7 @@ public class UserInfoController {
     @RequestMapping("/modifyUserInfo")
     public void modifyUserInfo(UserInfo userInfo,HttpServletRequest request,HttpServletResponse response) throws IOException {
         System.out.println(userInfo);
-        boolean b = userInfoServiceImpl.modifyUserInfo(userInfo);
-        response.setContentType("text/html;charset=utf-8");
-        if (b){
+        if (userInfoServiceImpl.modifyUserInfo(userInfo)){
             request.getSession().setAttribute("UserInfo",userInfoServiceImpl.loadUserInfoById(userInfo.getUserId()));
             response.getWriter().print("修改成功");
         }else {
@@ -59,11 +57,11 @@ public class UserInfoController {
      */
     @RequestMapping("/indexView")
     public ModelAndView indexView(HttpServletRequest request){
-        //连接login后删除下面四行
-        UserLogin userLogin = new UserLogin();
-        userLogin.setUserId(1007);
-        userLogin.setUserPwd("789");
-        request.getSession().setAttribute("User",userLogin);
+//        //连接login后删除下面四行
+//        UserLogin userLogin = new UserLogin();
+//        userLogin.setUserId(1007);
+//        userLogin.setUserPwd("789");
+//        request.getSession().setAttribute("User",userLogin);
         return new ModelAndView("redirect:getUserInfo");
     }
     /**

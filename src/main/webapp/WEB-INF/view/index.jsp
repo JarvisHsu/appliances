@@ -62,9 +62,9 @@
         <h1>您好,${sessionScope.UserInfo.userName}<span>Welcome to JarvisHsu's personal space</span></h1>
         <div class="htmleaf-links">
             <a class="htmleaf-icon icon-htmleaf-home-outline" href="#" title="Home"
-               target=""><span> Home</span></a>
+               target=""><span>Home</span></a>
             <a class="htmleaf-icon icon-htmleaf-arrow-forward-outline"
-               href="#" id="LogOut" title="LogOut" target=""><span> LogOut</span></a>
+               href="#" id="LogOut" title="LogOut" target=""><span>LogOut</span></a>
         </div>
     </header>
     <div class="htmleaf-content bgcolor-8">
@@ -91,7 +91,6 @@
         <p>本项目产品正处于测试阶段，您所使用的产品并非最终版本。最终解释权归系统管理员所有</p>
     </div>
     <div class="related" hidden>
-
         <h3>如果你喜欢这个插件，那么你可能也喜欢:</h3>
         <a href="#">
             <img src="${pageContext.request.contextPath}/Image/online_campaign_monochromatic.svg" width="280px"
@@ -106,13 +105,11 @@
     </div>
     <%--    占位图--%>
     <div class="related">
-        <img src="${pageContext.request.contextPath}/Image/1920_358.png" alt="">
+        <img src="${pageContext.request.contextPath}/Image/1920_358.png" style="width: 100%;" alt="">
     </div>
 </div>
-<p style="color: rgba(1,1,1,0.2);position: absolute; bottom: 0;right: 40%;">Created by IntelliJ IDEA.author :
-    JarvisHsu.Version:0.1 Beta</p>
-
-
+<p style="color: rgba(1,1,1,0.2);display: block;margin: 0 auto;width: 442px;">Created by IntelliJ IDEA.author :
+    JarvisHsu.Version:1.0 Beta</p>
 </body>
 <script>
     //标记标签功能

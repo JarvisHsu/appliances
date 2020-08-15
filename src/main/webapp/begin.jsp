@@ -18,7 +18,7 @@
         //获取到id为time标签中的内容，现进行判断
         if (time.innerHTML <= 1) {
             //等于0时清除计时
-            post("indexView")
+            post("loginView")
             // window.location.href="https://www.baidu.com";
             // rel="external nofollow" ;
         } else {

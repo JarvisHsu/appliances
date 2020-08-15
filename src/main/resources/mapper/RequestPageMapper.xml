@@ -67,7 +67,8 @@
     <!--    更新某个单子的状态-->
     <update id="updateOrderStatus" parameterType="map">
         update requestpage
-        set status = #{status}
+        set status    = #{status},
+            updateTime=now()
         where orderId = #{orderId}
     </update>
     <!--    创建一个订单-->
@@ -86,7 +87,8 @@
     <update id="addAComment" parameterType="map">
         update requestpage
         set comment=#{comment},
-            status='5'
+            status='5',
+            updateTime=now()
         where orderId = #{orderId}
     </update>
     <!--    查一张单子-->
@@ -111,12 +113,14 @@
     <!--    更新某个单子的客服技工和状态-->
     <update id="updateFixSend" parameterType="requestPage">
         update requestpage
-        set fixId   = #{fixId},
+        set fixId     = #{fixId},
             senderId=#{senderId},
-            status=#{status}
+            status=#{status},
+            updateTime=now()
         where orderId = #{orderId}
     </update>
     <select id="loadAllOrders" resultMap="orderResult">
-        select * from requestpage;
+        select *
+        from requestpage;
     </select>
 </mapper>

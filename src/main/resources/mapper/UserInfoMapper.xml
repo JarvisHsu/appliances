@@ -29,7 +29,7 @@
     <select id="loadUserByRoleId" resultMap="userInfoResult" parameterType="Integer">
         select * from userinfo where roleId=#{roleId}
     </select>
-    <insert id="createAnUser" parameterType="Integer">
-        INSERT into userInfo(userId, roleId, userName) values (#{userId},1,'未启用')
+    <insert id="createAnUser" parameterType="userInfo">
+        INSERT into userInfo(userId, roleId, userName) values (#{userId},#{roleId},#{userName})
     </insert>
 </mapper>

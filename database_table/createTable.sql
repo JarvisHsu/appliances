@@ -24,17 +24,18 @@ CREATE table userlogin
     CONSTRAINT PK_userId PRIMARY KEY (userId)
 ) AUTO_INCREMENT 1001;
 
-INSERT into userlogin
-VALUES (DEFAULT, MD5('123')),
-       (DEFAULT, MD5('123')),
-       (DEFAULT, MD5('123')),
-       (DEFAULT, MD5('456')),
-       (DEFAULT, mD5('456')),
-       (DEFAULT, MD5('456')),
-       (DEFAULT, MD5('789')),
-       (DEFAULT, MD5('789')),
-       (DEFAULT, MD5('789'));
-
+drop procedure if exists proc_userLogin;
+delimiter $
+create procedure proc_userLogin()
+BEGIN
+    DECLARE i int default 1;
+    while i < 10
+        do
+            INSERT into userlogin VALUES (DEFAULT, MD5('192837'));
+            set i = i + 1;
+        end while;
+end;
+call proc_userLogin();
 
 -- 用户基本信息
 CREATE table userInfo
@@ -52,16 +53,16 @@ CREATE table userInfo
 );
 
 INSERT into userInfo
-VALUES (1001, 1, '客户1', '14782577866', '男', '2020-02-03', DEFAULT, DEFAULT);
+VALUES (1001, 1, '客户1', '14782577866', '男', '2000-01-15', DEFAULT, DEFAULT),
+       (1005, 2, '维修人员1', '19829817502', '男', '1995-06-23', DEFAULT, DEFAULT),
+       (1007, 3, '客服1', '18327937220', '男', '2001-12-15', DEFAULT, DEFAULT),
+       (1009, 4, '系统管理员', '13387902648', '男', '1982-01-19', DEFAULT, DEFAULT);;
 INSERT into userInfo(userId, roleId, userName)
 VALUES (1002, 1, '客户2'),
-       (1003, 3, '维修人员1'),
-       (1004, 1, '客户3'),
-       (1005, 1, '客户4'),
-       (1006, 3, '维修人员2'),
-       (1007, 4, '系统管理员'),
-       (1008, 2, '客服1'),
-       (1009, 2, '客服2');
+       (1003, 1, '客户3'),
+       (1004, 1, '客户4'),
+       (1006, 2, '维修人员2'),
+       (1008, 3, '客服2');
 
 
 # 产品表(固定)
@@ -71,7 +72,7 @@ create table goods
     goodsName varchar(32) not null,
     goodsInfo varchar(128),
     CONSTRAINT PK_GOODS primary key (goodsId)
-) auto_increment 500;
+) auto_increment 501;
 
 insert into goods
 values (default, '产品1', '公司的首批试行产品,可能经常会出现问题，修理费用很低'),
@@ -95,13 +96,13 @@ insert into haveGoods
 values (501, 1001, '1'),
        (502, 1001, '1'),
        (503, 1001, '1'),
-       (504, 1001, '1'),
-       (505, 1002, '1'),
        (501, 1002, '1'),
-       (502, 1002, '1'),
-       (500, 1004, '1'),
-       (502, 1004, '1'),
-       (503, 1005, '1');
+       (503, 1002, '1'),
+       (505, 1002, '1'),
+       (501, 1003, '1'),
+       (502, 1003, '1'),
+       (505, 1003, '1'),
+       (505, 1004, '1');
 
 # 地址
 create table userAddr
@@ -115,7 +116,7 @@ create table userAddr
     contactNumber varchar(32),
     CONSTRAINT PK_ADDRID primary key (addrId),
     CONSTRAINT FK_ADDRUSER FOREIGN KEY (userId) REFERENCES userinfo (userId)
-) auto_increment 1000;
+) auto_increment 1001;
 
 drop procedure if exists proc_userAddr;
 delimiter $
@@ -142,7 +143,7 @@ BEGIN
     while i < 2
         do
             insert into userAddr
-            values (default, 1004, concat(i + 5, '省'), concat(i + 2, '市'), concat(i - 1, '区'),
+            values (default, 1003, concat(i + 5, '省'), concat(i + 2, '市'), concat(i - 1, '区'),
                     concat(i - 1, '路', i, '号'), round(13325671212 + RAND() * 1000000, 0));
             set i = i + 1;
         end while;
@@ -150,7 +151,7 @@ BEGIN
     while i < 3
         do
             insert into userAddr
-            values (default, 1005, concat(i + 3, '省'), concat(i + 2, '市'), concat(i - 1, '区'),
+            values (default, 1004, concat(i + 3, '省'), concat(i + 2, '市'), concat(i - 1, '区'),
                     concat(i - 1, '路', i, '号'), round(13327891212 + RAND() * 1000000, 0));
             set i = i + 1;
         end while;
@@ -180,12 +181,11 @@ create table requestPage
 );
 
 insert into requestPage
-values (default, 501, 1001, 1001, 8.4, '2', 1003, 1009, null,now(), default),
-       (default, 502, 1001, 1002, 7.8, '4', 1003, 1008, null,now(), default),
-       (default, 502, 1001, 1002, 7.8, '1', 1003, 1008, null,now(), default),
-       (default, 502, 1001, 1002, 7.8, '0', null, null, null,now(), default),
-       (default, 502, 1001, 1002, 7.8, '5', 1006, 1009, '服务很好，给你们个赞',now(), default),
-       (default, 501, 1002, 1005, 9.2, '5', 1006, 1009, '服务很好，给你们个赞',now(), default);
+values (default, 501, 1001, 1001, 12.5, '1', 1005, 1007, null, now(), default),
+       (default, 502, 1001, 1002, 16.0, '5', 1006, 1007, '师傅很专业,不到半个小时就修理完了,给你们点个赞', now(), default),
+       (default, 503, 1001, 1001, 15.3, '0', null, null, null, now(), default),
+       (default, 502, 1001, 1003, 18.7, '3', null, null, null, now(), default),
+       (default, 501, 1001, 1002, 12.1, '4', null, null, null, now(), default);
 
 create table PayAccount
 (
@@ -196,7 +196,7 @@ create table PayAccount
 );
 
 insert into PayAccount
-values (1001, md5('123456'), default),
-       (1002, md5('123456'), default),
-       (1004, md5('123456'), default),
-       (1005, md5('123456'), default);
+values (1001, md5('115200'), default),
+       (1002, md5('115200'), default),
+       (1003, md5('115200'), default),
+       (1004, md5('115200'), default);

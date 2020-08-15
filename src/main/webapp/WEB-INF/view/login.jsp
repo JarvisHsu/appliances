@@ -14,11 +14,11 @@
     <h2>家电售后服务平台</h2>
     <form action="loginHandler" method="post">
         <div class="item">
-            <input id="user_id" type="text" required name="UserId" value="1001" autocomplete="off">
+            <input id="user_id" type="text" required name="UserId" value="" autocomplete="off">
             <label>UserId</label>
         </div>
         <div class="item" id="password-label">
-            <input id="password" type="password" required name="userPwd" value="123" autocomplete="off">
+            <input id="password" type="password" required name="userPwd" value="" autocomplete="off">
             <label>PassWord</label>
         </div>
         <div class="item" id="div_captcha">
