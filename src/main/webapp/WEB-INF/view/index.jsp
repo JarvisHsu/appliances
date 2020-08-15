@@ -145,16 +145,22 @@
             $("#fun5").text("暂未开通");
         }
         if (str === '维修人员') {
-            $("#fun1").text("查看派单");
+            $("#fun1").text("查看派单").click(function (){
+                post("loadFixerAllOrders");
+            });
             $("#fun2").text("个人信息");
             $("#fun3").text("暂未开通");
             $("#fun4").text("暂未开通");
             $("#fun5").text("暂未开通");
         }
         if (str === '系统管理员') {
-            $("#fun1").text("维修人员");
+            $("#fun1").text("维修人员").click(function () {
+                post("loadAllFixer");
+            });
             $("#fun2").text("个人信息");
-            $("#fun3").text("公司客服");
+            $("#fun3").text("公司客服").click(function () {
+                post("loadAllService");
+            });
             $("#fun4").text("售后服务");
             $("#fun5").text("暂未开通");
         }

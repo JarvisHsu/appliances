@@ -23,8 +23,10 @@ cn\hellojarvis\service\impl\HaveGoodsServiceImpl.class
 cn\hellojarvis\service\IUserInfoService.class
 cn\hellojarvis\controller\C_UserOperationController.class
 cn\hellojarvis\service\IHaveGoodService.class
+cn\hellojarvis\controller\F_UserOperationController.class
 cn\hellojarvis\dao\IUserInfoDao.class
 cn\hellojarvis\service\impl\UserInfoServiceImpl.class
+cn\hellojarvis\controller\R_UserOperationController.class
 cn\hellojarvis\entity\Role.class
 cn\hellojarvis\entity\RequestPage.class
 cn\hellojarvis\service\IRequestPageService.class

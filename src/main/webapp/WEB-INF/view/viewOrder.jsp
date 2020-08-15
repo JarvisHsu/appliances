@@ -230,6 +230,139 @@ height: 40px;background: transparent;border-radius: 50px;cursor: pointer;outline
         </div>
     </C:if>
 </C:if>
+<%--技工界面--%>
+<C:if test="${sessionScope.UserInfo.roleId==3}">
+    <C:if test="${requestScope.fixerAllOrders!=null}">
+        <div class="Orders" style="width: 900px;">
+            <h2>当前派单</h2>
+            <table border="1" cellspacing="0">
+                <tr>
+                    <th>用户名称</th>
+                    <th>维修产品</th>
+                    <th>维修价格</th>
+                    <th>当前状态</th>
+                    <th>维修师傅</th>
+                    <th>处理客服</th>
+                    <th>联系电话</th>
+                    <th>用户地址</th>
+                </tr>
+                <C:forEach items="${requestScope.fixerAllOrders}" var="pageList">
+                    <tr>
+                        <td>${pageList.client.userName}</td>
+                        <td>${pageList.goods.goodsName}</td>
+                        <td>${pageList.price}</td>
+                        <td><C:if test="${pageList.status=='5'}">
+                            已评论
+                        </C:if>
+                            <C:if test="${pageList.status=='4'}">
+                                正在进行
+                            </C:if>
+                            <C:if test="${pageList.status=='3'}">
+                                未支付
+                            </C:if>
+                            <C:if test="${pageList.status=='2'}">
+                                已派单
+                            </C:if>
+                            <C:if test="${pageList.status=='1'}">
+                                已完成
+                            </C:if>
+                            <C:if test="${pageList.status=='0'}">
+                                已废弃
+                            </C:if></td>
+                        <td><c:if test="${pageList.fixId==null&&pageList.status!='0'}">
+                            等待指派
+                        </c:if>
+                            <c:if test="${pageList.status=='0'}">
+                                -
+                            </c:if>
+                                ${pageList.fixer.userName}</td>
+                        <td><C:if test="${pageList.senderId==null&&pageList.status!='0'}">
+                            等待处理
+                        </C:if>
+                            <c:if test="${pageList.status=='0'}">
+                                -
+                            </c:if>
+                                ${pageList.sender.userName}</td>
+                        <td>${pageList.userAddress.contactNumber}</td>
+                        <td style="width: 100px;">
+                                ${pageList.userAddress.province}${pageList.userAddress.city}${pageList.userAddress.area}${pageList.userAddress.address}
+                        </td>
+                        <C:if test="${pageList.status=='2'}">
+                            <td><input type="radio" style="cursor: pointer;" name="finishFix" value="${pageList.orderId}">完成
+                            </td>
+                        </C:if>
+                    </tr>
+                </C:forEach>
+                <input type="button" id="finishFix" value="完成修理" style="cursor: pointer;">
+            </table>
+        </div>
+    </C:if>
+</C:if>
+<%--管理员界面--%>
+<C:if test="${sessionScope.UserInfo.roleId==4}">
+    <C:if test="${requestScope.AllOrders!=null}">
+        <div class="Orders" style="width: 900px;">
+            <h2>订单列表</h2>
+            <table border="1" cellspacing="0">
+                <tr>
+                    <th>用户名称</th>
+                    <th>维修产品</th>
+                    <th>维修价格</th>
+                    <th>当前状态</th>
+                    <th>维修师傅</th>
+                    <th>处理客服</th>
+                    <th>联系电话</th>
+                    <th>用户地址</th>
+                    <th>最后更新</th>
+                </tr>
+                <C:forEach items="${requestScope.AllOrders}" var="pageList">
+                    <tr>
+                        <td>${pageList.client.userName}</td>
+                        <td>${pageList.goods.goodsName}</td>
+                        <td>${pageList.price}</td>
+                        <td><C:if test="${pageList.status=='5'}">
+                            已评论
+                        </C:if>
+                            <C:if test="${pageList.status=='4'}">
+                                正在进行
+                            </C:if>
+                            <C:if test="${pageList.status=='3'}">
+                                未支付
+                            </C:if>
+                            <C:if test="${pageList.status=='2'}">
+                                已派单
+                            </C:if>
+                            <C:if test="${pageList.status=='1'}">
+                                已完成
+                            </C:if>
+                            <C:if test="${pageList.status=='0'}">
+                                已废弃
+                            </C:if></td>
+                        <td><c:if test="${pageList.fixId==null&&pageList.status!='0'}">
+                            等待指派
+                        </c:if>
+                            <c:if test="${pageList.status=='0'}">
+                                -
+                            </c:if>
+                                ${pageList.fixer.userName}</td>
+                        <td><C:if test="${pageList.senderId==null&&pageList.status!='0'}">
+                            等待处理
+                        </C:if>
+                            <c:if test="${pageList.status=='0'}">
+                                -
+                            </c:if>
+                                ${pageList.sender.userName}</td>
+                        <td>${pageList.userAddress.contactNumber}</td>
+                        <td style="width: 100px;">
+                                ${pageList.userAddress.province}${pageList.userAddress.city}${pageList.userAddress.area}${pageList.userAddress.address}
+                        </td>
+                        <td>${pageList.updateDate}</td>
+                    </tr>
+                </C:forEach>
+            </table>
+        </div>
+    </C:if>
+</C:if>
 </body>
 <%@include file="../public/booter.jsp" %>
 <script>
@@ -385,6 +518,7 @@ height: 40px;background: transparent;border-radius: 50px;cursor: pointer;outline
             alert("尚未选择！");
         }
     });
+    //客服调用分派订单模块
     $("#sendent").click(function () {
         var sendentList = document.getElementsByName("sendent");
         var sendent = null;
@@ -466,13 +600,30 @@ height: 40px;background: transparent;border-radius: 50px;cursor: pointer;outline
         }
 
     });
+    //技工调用完成修理模块
+    $("#finishFix").click(function () {
+        var finishList = document.getElementsByName("finishFix");
+        var finishOrderId = null;
+        for (var i = 0; i < finishList.length; i++) {
+            if (finishList[i].checked === true) {
+                finishOrderId = finishList[i].value;
+            }
+        }
+        if (finishOrderId!=null){
+            $(".Orders").hide();
+            var fixParams = [finishOrderId]
+            post("updateFixerOrderStatus",fixParams);
+        }else {
+            alert("尚未选择！");
+        }
+    });
+
 
     function payErrorMessage() {
         if (${requestScope.payErrorMessage!=null}) {
             alert("${requestScope.payErrorMessage}");
         }
     }
-
     function post(url, params) {
         // 创建form元素
         var temp_form = document.createElement("form");

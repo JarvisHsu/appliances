@@ -95,19 +95,20 @@
         from requestpage
         where orderId = #{orderId}
     </select>
-    <!--    查所有除过废弃和没支付的单子-->
+    <!--    查所有除过 废弃和没支付的单子-->
     <select id="loadAllUsersOrdersWithRequesting" resultMap="orderResult">
         select *
         from requestpage
         where status in ('1', '2', '4', '5');
     </select>
     <!--    查某个技工的当前单量-->
-    <select id="loadFixerOrders" parameterType="Integer" resultType="Integer">
-        SELECT count(*)
+    <select id="loadFixerOrders" parameterType="Integer" resultMap="orderResult">
+        SELECT *
         FROM requestpage
         WHERE fixId = #{fixId}
           and status = '2';
     </select>
+    <!--    更新某个单子的客服技工和状态-->
     <update id="updateFixSend" parameterType="requestPage">
         update requestpage
         set fixId   = #{fixId},

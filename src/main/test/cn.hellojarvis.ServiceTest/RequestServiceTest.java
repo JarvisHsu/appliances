@@ -41,6 +41,7 @@ public class RequestServiceTest {
     }
     @Test
     public void testLoadFixerOrders(){
-        System.out.println(requestPageService.loadFixerOrders(1003));
+        System.out.println(requestPageService.loadFixerOrdersNum(1003));
+        requestPageService.loadFixerOrders(1003).forEach(System.out::println);
     }
 }

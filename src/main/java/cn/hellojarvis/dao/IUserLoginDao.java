@@ -11,4 +11,6 @@ import cn.hellojarvis.entity.UserLogin;
 public interface IUserLoginDao {
     public UserLogin loadUser(UserLogin userLogin);
     public int modifyPwd(UserLogin userLogin);
+    public int createUser();
+    public UserLogin loadNewestUser();
 }

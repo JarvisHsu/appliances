@@ -86,12 +86,22 @@ public class RequestPageServiceImpl implements IRequestPageService {
     }
 
     @Override
-    public int loadFixerOrders(Integer fixId) {
+    public int loadFixerOrdersNum(Integer fixId) {
+        return requestPageDao.loadFixerOrders(fixId).size();
+    }
+
+    @Override
+    public List<RequestPage> loadFixerOrders(Integer fixId) {
         return requestPageDao.loadFixerOrders(fixId);
     }
 
     @Override
     public boolean updateFixSend(RequestPage requestPage) {
         return requestPageDao.updateFixSend(requestPage)!=0;
+    }
+
+    @Override
+    public List<RequestPage> loadAllOrders() {
+        return requestPageDao.loadAllOrders();
     }
 }

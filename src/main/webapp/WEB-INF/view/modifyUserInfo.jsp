@@ -15,6 +15,7 @@
         z-index: 1;
         box-sizing: border-box;
     }
+
     .Info {
         width: 200px;
         height: 50px;
@@ -23,6 +24,7 @@
         border: none;
         outline: none;
     }
+
     .bubble-legend-symbol {
         margin: 15px auto 0;
         width: 100px;
@@ -76,8 +78,7 @@
                 <td>
                     <input class="Info" id="userPhone" type="text" name="userPhone"
                            placeholder="${sessionScope.UserInfo.userPhone}" value="${sessionScope.UserInfo.userPhone}"
-                           autocomplete="off" oninvalid="setCustomValidity('手机号码格式不正确')"
-                           pattern="(\d{11})|^((\d{7,8})|(\d{4}|\d{3})-(\d{7,8})|(\d{4}|\d{3})-(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1})|(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1}))$">
+                           autocomplete="off">
                 </td>
             </tr>
             <tr>
@@ -94,7 +95,8 @@
                     生日
                 </td>
                 <td>
-                    <input class="Info" style="font-size: 20px;cursor: pointer;" id="userBirthday" name="userBirthday" type="date"
+                    <input class="Info" style="font-size: 20px;cursor: pointer;" id="userBirthday" name="userBirthday"
+                           type="date"
                            min="1970-01-01" value="${sessionScope.UserInfo.userBirthday}"
                            autocomplete="off" required="required">
                 </td>
@@ -155,26 +157,34 @@
         $("#woman").checked = true;
         radios[1].checked = true;
     }
-    console.log(radios[0].checked)
-    console.log(radios[1].checked)
+    $("#userPhone").blur(function () {
+        var reg = /^1[0-9]{10}$/;
+        if (!reg.test(this.value)){
+            alert("手机号码格式错误")
+        }
 
+    })
     $("#putOn").click(function () {
         var userId = $("#userId").val();
         var roleId = $("#roleId").val();
         var userName = $("#userName").val();
         var userPhone = $("#userPhone").val();
+        var reg = /^1[0-9]{10}$/;
+        if (!reg.test(userPhone)){
+            alert("手机号码格式错误")
+            return ;
+        }
         var userBirthday = $("#userBirthday").val();
         var createDate = $("#createDate").val();
         var updateDate = $("#updateDate").val();
         var roleroleId = $("#role.roleId").val();
         var roleroleName = $("#role.roleName").val();
-        if (radios[0].checked ===true) {
+        if (radios[0].checked === true) {
             var userGender = $("#man").val();
         }
-        if (radios[1].checked === true){
+        if (radios[1].checked === true) {
             var userGender = $("#woman").val();
         }
-        console.log(userGender)
         $.post("modifyUserInfo", {
             "userId": userId,
             "roleId": roleId,
@@ -190,7 +200,6 @@
             alert(data);
         });
     });
-
 
     $("#back").click(function () {
         post("/getUserInfo");

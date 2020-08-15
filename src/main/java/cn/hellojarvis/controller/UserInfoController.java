@@ -24,7 +24,6 @@ public class UserInfoController {
     @Autowired
     private UserInfoServiceImpl userInfoServiceImpl;
 
-
     @RequestMapping("/getUserInfo")
     public ModelAndView getUserInfo(HttpServletRequest request, HttpServletResponse response) throws IOException {
         UserLogin user = (UserLogin) request.getSession().getAttribute("User");
@@ -56,7 +55,7 @@ public class UserInfoController {
     public ModelAndView indexView(HttpServletRequest request){
         //连接login后删除下面四行
         UserLogin userLogin = new UserLogin();
-        userLogin.setUserId(1009);
+        userLogin.setUserId(1007);
         userLogin.setUserPwd("789");
         request.getSession().setAttribute("User",userLogin);
         return new ModelAndView("redirect:getUserInfo");

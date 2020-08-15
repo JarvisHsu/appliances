@@ -46,7 +46,7 @@ public class S_UserOperationController {
         String[] fixId = FixId.split(",");
         List<Integer> list = new ArrayList<>();
         for (int i = 0; i < fixId.length; i++) {
-            list.add(requestPageService.loadFixerOrders((int) Double.parseDouble(fixId[i])));
+            list.add(requestPageService.loadFixerOrdersNum((int) Double.parseDouble(fixId[i])));
         }
         return list;
     }

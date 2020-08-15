@@ -13,4 +13,10 @@
     <update id="modifyPwd" parameterType="userLogin">
         update userlogin set userPwd=md5(#{userPwd}) where userId=#{userId}
     </update>
+    <insert id="createUser">
+        insert into userlogin values (default,md5('123456'));
+    </insert>
+    <select id="loadNewestUser" resultMap="userResult">
+        select * from userlogin order by userId desc limit 0,1
+    </select>
 </mapper>

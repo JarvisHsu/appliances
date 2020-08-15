@@ -21,4 +21,14 @@ public class UserLoginServiceImpl implements IUserLoginService {
     public boolean loadUser(UserLogin userLogin){
         return userLoginDao.loadUser(userLogin)!=null;
     }
+
+    @Override
+    public UserLogin loadNewestUser() {
+        return userLoginDao.loadNewestUser();
+    }
+
+    @Override
+    public boolean createUser() {
+        return userLoginDao.createUser()!=0;
+    }
 }

@@ -10,4 +10,6 @@ import cn.hellojarvis.entity.UserLogin;
  */
 public interface IUserLoginService {
     public boolean loadUser(UserLogin userLogin);
+    public UserLogin loadNewestUser();
+    public boolean createUser();
 }

@@ -28,6 +28,12 @@ public class UserInfoServiceImpl implements IUserInfoService {
     public List<UserInfo> loadUserByRoleId(Integer roleId) {
         return userInfoDao.loadUserByRoleId(roleId);
     }
+
+    @Override
+    public boolean createAnUser(UserInfo userInfo) {
+        return userInfoDao.createAnUser(userInfo);
+    }
+
     @Override
     public boolean modifyUserInfo(UserInfo userInfo) {
         return userInfoDao.modifyUserInfo(userInfo);
